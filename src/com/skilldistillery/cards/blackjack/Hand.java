@@ -6,7 +6,6 @@ public class Hand {
 	private List<Card> hand;
 	
 	public void addCard(Card card) {
-		
 		// To do
 	}
 
