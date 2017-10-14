@@ -1,12 +1,13 @@
 package com.skilldistillery.cards.blackjack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-	private List<Card> hand;
+	private List<Card> hand = new ArrayList<>();
 	
 	public void addCard(Card card) {
-		Hand hand = card.;
+		hand.add(card);
 	}
 
 	public List<Card> getHand() {
@@ -14,12 +15,13 @@ public class Hand {
 	}
 	
 	public int getValueOfHand() {
-//		hand.getRank().
+		for (Card card : hand) {
+			
+		}
 		return 0;
 	}
 
 	public Hand(List<Card> hand) {
-		super();
 		this.hand = hand;
 	}
 	

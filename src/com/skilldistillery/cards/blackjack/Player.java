@@ -13,16 +13,19 @@ public class Player {
 		return betSize;
 	}
 	
-	public Player(String name, Hand hand) {
-		this.name = name;
-		this.hand = hand;
-	}
+//	public Player(String name, Hand hand) {
+//		this.name = name;
+//		this.hand = hand;
+//	}
 	
-	public Player(String name) {
-		this.name = name;
-	}
+//	public Player(String name) {
+//		this.name = name;
+//	}
 	
-	public Player() {}
+	public Player() {
+		this.name = getName();
+		this.stackSize = getStackSize();
+	}
 
 	public Player(String name, Hand hand, int stackSize) {
 		super();
@@ -46,4 +49,8 @@ public class Player {
 		stackSize = stacks[(int)(Math.random() * 7)];
 		return stackSize;
 	}
+	
+//	public void addCard(Card card) {
+//		hand.addCard(card);
+//	}
 }

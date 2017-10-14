@@ -1,20 +1,18 @@
 package com.skilldistillery.cards.blackjack;
 
 public class Dealer extends Player {
-	Deck deck = new Deck();
+	Deck deck;
 	
-	public Dealer(String name, Hand hand) {
-		// Licensed dealers in developed countries don't need stackSize. They always cover the players.
-		super(name, hand);
-	}
-	
+	// Licensed dealers in developed nations don't need stack size. They always cover all of the players.
 	public Dealer() {
-		// for testing
+		super();
+		deck = new Deck();
+		deck.shuffleDeck();
 	}
 	
-	public void dealHand(Deck deck) {
-		Card card1 = deck.dealCard();
-		Card card2 = deck.dealCard();
+	public Card getCard() {
+		Card card = deck.dealCard();
+		return card;
 	}
 
 }
