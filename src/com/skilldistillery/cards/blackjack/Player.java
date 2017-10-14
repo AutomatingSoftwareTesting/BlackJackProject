@@ -17,6 +17,8 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 	}
+	
+	public Player() {}
 
 	public Player(String name, Hand hand, double stackSize) {
 		super();
@@ -26,6 +28,8 @@ public class Player {
 	}
 
 	public String getName() {
+		String [] names = {"Jason", "Jake", "Ekubay", "Airik", "Chris", "Rosanne", "Dave", "Jen", "Alexis", "Greg", "Dave", "Aaron", "Alex", "Hunter"};
+		name = names[(int)(Math.random() * 14)];
 		return name;
 	}
 

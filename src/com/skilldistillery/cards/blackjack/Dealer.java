@@ -15,5 +15,9 @@ public class Dealer extends Player {
 		// for testing
 		super(name);
 	}
+	
+	public Dealer() {
+		// for testing
+	}
 
 }

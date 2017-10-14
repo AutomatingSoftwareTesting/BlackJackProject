@@ -1,0 +1,31 @@
+package com.skilldistillery.cards.blackjack;
+
+public class Game {
+	public void startSession() {
+		System.out.println("Welcome to the Skill Distillery Blackjack room.");
+		System.out.println("The dealer will stand on hands totaling 17 and above; including 'soft' 17.");
+		System.out.println("The player is not allowed to buy insurance. If either side reaches 21 they immdediately win the game.");
+		// The rules above may change as the game evolves. The first rule above favors the dealer; the second the player.
+	}
+	
+	public void Dealer() {
+		Dealer d = new Dealer();
+		Player p = new Player();
+		
+		Deck deck = new Deck();
+		deck.shuffleDeck();
+		Card playerCard1 = deck.dealCard();
+		Card dealerCard = deck.dealCard();
+		Card playerCard2 = deck.dealCard();
+		
+		System.out.println(p.getName() + ", the player in the first seat, is dealt " + playerCard1 + " and " + playerCard2 + ".");
+		System.out.println("For a hand total of: " + (playerCard1.getRank().getValue() + playerCard2.getRank().getValue()) + ".");
+		System.out.println(d.getName() + ", the dealer, is showing a " + dealerCard + ".");
+		System.out.println("With a value of: " + dealerCard.getRank().getValue() +".");
+		System.out.println(p.getName() + " what do you want to do?");
+	}
+	
+	public void Player() {
+		Player p = new Player();
+	}
+}

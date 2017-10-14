@@ -15,9 +15,7 @@ public enum Rank {
     KING("K", 10), 
     ACE("A", 11);
 	
-	private int value;  
-	// These values are specific to blackjack only
-	// Is that a problem b/c of Your card and deck implementations should NOT be coupled to Blackjack
+	private int value;  // This value ranking is specific to blackjack
 	private String rankDisplay;
 
 	private Rank(String rankDisplay, int value) {
