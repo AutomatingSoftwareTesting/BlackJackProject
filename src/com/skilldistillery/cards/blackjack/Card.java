@@ -12,6 +12,11 @@ public class Card implements Comparable<Card> {
     }
     
     public Card() {}
+    
+    public boolean isFaceUp() {
+    		// If not face don't want to show rank or suit.
+    		return true;
+    }
 
     @Override
     public String toString() {
