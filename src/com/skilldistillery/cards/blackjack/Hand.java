@@ -1,5 +1,28 @@
 package com.skilldistillery.cards.blackjack;
 
-public class Hand {
+import java.util.List;
 
+public class Hand {
+	private List<Card> hand;
+	
+	public void addCard(Card card) {
+		// To do
+	}
+
+	public List<Card> getHand() {
+		// To do
+		return hand;
+	}
+	
+	public int getValueOfHand() {
+		// To do
+		return 0;
+	}
+
+	public Hand(List<Card> hand) {
+		super();
+		this.hand = hand;
+	}
+	
+	
 }
