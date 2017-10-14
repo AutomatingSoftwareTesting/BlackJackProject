@@ -15,10 +15,11 @@ public class Hand {
 	}
 	
 	public int getValueOfHand() {
+		int hv = 0;
 		for (Card card : hand) {
-			
+			hv += card.getRank().getValue();
 		}
-		return 0;
+		return hv;
 	}
 
 	public Hand(List<Card> hand) {
