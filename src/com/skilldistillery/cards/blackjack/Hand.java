@@ -6,7 +6,7 @@ public class Hand {
 	private List<Card> hand;
 	
 	public void addCard(Card card) {
-		Hand hand = card;
+		Hand hand = card.;
 	}
 
 	public List<Card> getHand() {
@@ -14,7 +14,7 @@ public class Hand {
 	}
 	
 	public int getValueOfHand() {
-		hand.get(index)
+//		hand.getRank().
 		return 0;
 	}
 

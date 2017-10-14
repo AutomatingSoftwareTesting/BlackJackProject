@@ -3,7 +3,7 @@ package com.skilldistillery.cards.blackjack;
 public class Player {
 	private String name;
 	private Hand hand;
-	private double stackSize;
+	private int stackSize;
 	
 	public void placeWager(int wager) {
 		// To do
@@ -20,7 +20,7 @@ public class Player {
 	
 	public Player() {}
 
-	public Player(String name, Hand hand, double stackSize) {
+	public Player(String name, Hand hand, int stackSize) {
 		super();
 		this.name = name;
 		this.hand = hand;
@@ -37,7 +37,9 @@ public class Player {
 		return hand;
 	}
 
-	public double getStackSize() {
+	public int getStackSize() {
+		Integer [] stacks = {25, 50, 100, 100, 100, 200, 500};
+		stackSize = stacks[(int)(Math.random() * 7)];
 		return stackSize;
 	}
 }

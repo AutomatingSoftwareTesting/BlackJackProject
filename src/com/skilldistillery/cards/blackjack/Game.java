@@ -18,7 +18,8 @@ public class Game {
 		Card dealerCard = deck.dealCard();
 		Card playerCard2 = deck.dealCard();
 		
-		System.out.println(p.getName() + ", the player in the first seat, is dealt " + playerCard1 + " and " + playerCard2 + ".");
+		System.out.println(p.getName() + ", the player in the first seat, has $" + p.getStackSize() + ".");
+		System.out.println("They are dealt " + playerCard1 + " and " + playerCard2 + ".");
 		System.out.println("For a hand total of: " + (playerCard1.getRank().getValue() + playerCard2.getRank().getValue()) + ".");
 		System.out.println(d.getName() + ", the dealer, is showing a " + dealerCard + ".");
 		System.out.println("With a value of: " + dealerCard.getRank().getValue() +".");
