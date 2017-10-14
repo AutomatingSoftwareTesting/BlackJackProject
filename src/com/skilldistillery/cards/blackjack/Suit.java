@@ -13,6 +13,10 @@ public enum Suit {
 		this.suitDisplay = suitDisplay;
 		this.suitImage = suitImage;
 	}
+	
+	private Suit(String suitDisplay) {
+		this(suitDisplay, 'n');
+	}
 
 	public String getSuitDisplay() {
 		return suitDisplay;

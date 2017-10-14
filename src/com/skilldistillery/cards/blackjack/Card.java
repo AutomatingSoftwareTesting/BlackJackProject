@@ -10,21 +10,12 @@ public class Card implements Comparable<Card> {
         rank = r;
         suit = s;
     }
+    
+    public Card() {}
 
     @Override
     public String toString() {
         return (rank.getRankDisplay() + suit.getSuitImage());
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((rank == null) ? 0 : rank.hashCode());
-        result = prime * result
-                + ((suit == null) ? 0 : suit.hashCode());
-        return result;
     }
 
     public int compareTo(Card o) {
@@ -53,6 +44,14 @@ public class Card implements Comparable<Card> {
             return false;
         return true;
     }
+
+	public Rank getRank() {
+		return rank;
+	}
+
+	public Suit getSuit() {
+		return suit;
+	}
 }
 
 
