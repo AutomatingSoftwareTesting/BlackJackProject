@@ -8,6 +8,15 @@ public class Player {
 	public void placeWager(int wager) {
 		// To do
 	}
+	
+	public Player(String name, Hand hand) {
+		this.name = name;
+		this.hand = hand;
+	}
+	
+	public Player(String name) {
+		this.name = name;
+	}
 
 	public Player(String name, Hand hand, double stackSize) {
 		super();

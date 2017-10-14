@@ -6,12 +6,13 @@ public class Hand {
 	private List<Card> hand;
 	
 	public void addCard(Card card) {
+		
 		// To do
 	}
 
 	public List<Card> getHand() {
 		// To do
-		return hand;
+		return hand;  // is this supposed to be Hand
 	}
 	
 	public int getValueOfHand() {
