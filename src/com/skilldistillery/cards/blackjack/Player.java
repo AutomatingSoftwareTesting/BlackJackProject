@@ -4,9 +4,13 @@ public class Player {
 	private String name;
 	private Hand hand;
 	private int stackSize;
+	private int betSize;
 	
-	public void placeWager(int wager) {
-		// To do
+//	public void placeWager(int wager) {
+	public int placeWager() { // Simul random bet for now
+		Integer [] bets = {5, 10, 20};
+		betSize = bets[(int)(Math.random() * 3)];
+		return betSize;
 	}
 	
 	public Player(String name, Hand hand) {
