@@ -11,6 +11,11 @@ public class Player {
 		this.stackSize = getStackSize();
 	}
 	
+	public Player(String name, int stackSize) {
+		this.name = name;
+		this.stackSize = stackSize;
+	}
+	
 //	public void placeWager(int wager) {
 	public int placeWager() { // Simul random bet for now
 		Integer [] bets = {5, 10, 20};
@@ -24,13 +29,17 @@ public class Player {
 	
 	public String getName() {
 		String [] names = {"Jason", "Jake", "Ekubay", "Airik", "Chris", "Rosanne", "Dave", "Jen", "Alexis", "Greg", "Dave", "Aaron", "Alex", "Hunter"};
-		name = names[(int)(Math.random() * 14)];
+		name = names[(int)(Math.random() * 14)]; 
+		// For testing the line comment out 2 lines above and uncomment one below
+		// name = "Player Jason"; 
 		return name;
 	}
 
 	public int getStackSize() {
 		Integer [] stacks = {25, 50, 100, 100, 100, 200, 500};
 		stackSize = stacks[(int)(Math.random() * 7)];
+		// For testing the line comment out 2 lines above and uncomment one below
+		// stackSize = 100;
 		return stackSize;
 	}
 	
