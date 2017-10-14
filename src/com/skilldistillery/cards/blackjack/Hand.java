@@ -6,16 +6,15 @@ public class Hand {
 	private List<Card> hand;
 	
 	public void addCard(Card card) {
-		hand = card;
+		Hand hand = card;
 	}
 
 	public List<Card> getHand() {
-		// To do
-		return hand;  // is this supposed to be Hand
+		return hand;
 	}
 	
 	public int getValueOfHand() {
-		// To do
+		hand.get(index)
 		return 0;
 	}
 

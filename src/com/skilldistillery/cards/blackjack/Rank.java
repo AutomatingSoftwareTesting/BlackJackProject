@@ -23,8 +23,6 @@ public enum Rank {
 		this.rankDisplay = rankDisplay;
 	}
 	
-	private Rank() {}
-
 	public int getValue() {
 		return value;
 	}

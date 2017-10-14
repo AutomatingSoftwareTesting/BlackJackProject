@@ -4,7 +4,7 @@ public class Game {
 	public void startSession() {
 		System.out.println("Welcome to the Skill Distillery Blackjack room.");
 		System.out.println("The dealer will stand on hands totaling 17 and above; including 'soft' 17.");
-		System.out.println("The player is not allowed to buy insurance. If either side reaches 21 they immdediately win the game.");
+		System.out.println("The player is not allowed to buy insurance. If either side reaches 21 they immdediately win the game." + "\n");
 		// The rules above may change as the game evolves. The first rule above favors the dealer; the second the player.
 	}
 	

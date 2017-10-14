@@ -5,5 +5,6 @@ public class TableDriver {
 		Game g = new Game();
 		g.startSession();
 		g.Dealer();
+		g.Player();
 	}
 }
