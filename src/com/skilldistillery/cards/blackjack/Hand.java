@@ -7,6 +7,8 @@ public class Hand {
 	private List<Card> hand = new ArrayList<>();
 	
 	public void addCard(Card card) {
+		System.out.println(card);
+		System.out.println(hand);
 		hand.add(card);
 	}
 
@@ -25,6 +27,4 @@ public class Hand {
 	public Hand(List<Card> hand) {
 		this.hand = hand;
 	}
-	
-	
 }

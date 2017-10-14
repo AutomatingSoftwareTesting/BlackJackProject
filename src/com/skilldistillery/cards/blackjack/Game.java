@@ -23,7 +23,7 @@ public class Game {
 		// Player gets dealt first card
 		card = d.getCard();
 		System.out.println(card);
-//		p.getHand().addCard(card);
+//		p.addCard(card);
 		
 		// Dealer gets dealt first card
 		card = d.getCard();

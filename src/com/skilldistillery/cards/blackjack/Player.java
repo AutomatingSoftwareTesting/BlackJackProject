@@ -6,6 +6,11 @@ public class Player {
 	private int stackSize;
 	private int betSize;
 	
+	public Player() {
+		this.name = getName();
+		this.stackSize = getStackSize();
+	}
+	
 //	public void placeWager(int wager) {
 	public int placeWager() { // Simul random bet for now
 		Integer [] bets = {5, 10, 20};
@@ -13,35 +18,14 @@ public class Player {
 		return betSize;
 	}
 	
-//	public Player(String name, Hand hand) {
-//		this.name = name;
-//		this.hand = hand;
-//	}
-	
-//	public Player(String name) {
-//		this.name = name;
-//	}
-	
-	public Player() {
-		this.name = getName();
-		this.stackSize = getStackSize();
+	public Hand getHand() {
+		return hand;
 	}
-
-	public Player(String name, Hand hand, int stackSize) {
-		super();
-		this.name = name;
-		this.hand = hand;
-		this.stackSize = stackSize;
-	}
-
+	
 	public String getName() {
 		String [] names = {"Jason", "Jake", "Ekubay", "Airik", "Chris", "Rosanne", "Dave", "Jen", "Alexis", "Greg", "Dave", "Aaron", "Alex", "Hunter"};
 		name = names[(int)(Math.random() * 14)];
 		return name;
-	}
-
-	public Hand getHand() {
-		return hand;
 	}
 
 	public int getStackSize() {
@@ -50,7 +34,7 @@ public class Player {
 		return stackSize;
 	}
 	
-//	public void addCard(Card card) {
-//		hand.addCard(card);
-//	}
+	public void addCard(Card card) {
+		hand.addCard(card);
+	}
 }
