@@ -15,16 +15,14 @@ public enum Rank {
     KING("K", 10), 
     ACE("A", 11);
 	
-	private int value;
+	private int value;  
+	// These values are specific to blackjack only
+	// Is that a problem b/c of Your card and deck implementations should NOT be coupled to Blackjack
 	private String rankDisplay;
 
 	private Rank(String rankDisplay, int value) {
 		this.value = value;
 		this.rankDisplay = rankDisplay;
-	}
-	
-	private Rank(String rankDisplay) {
-		this(rankDisplay, 0);
 	}
 	
 	private Rank() {}

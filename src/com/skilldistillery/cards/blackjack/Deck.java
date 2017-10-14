@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Deck {
     private List<Card> deck;
-    private int numDelt;
+    private int numDelt = 0;
     
     public Deck() {
     		deck = new ArrayList<>(52);
@@ -20,7 +20,12 @@ public class Deck {
     public void shuffleDeck(){
     		Collections.shuffle(deck);
     }
-
+    
+    public Card dealCard() {
+    		numDelt++;
+    		return deck.remove(0);
+    }
+    
 	public List<Card> getDeck() {
 		return deck;
 	}
@@ -28,5 +33,9 @@ public class Deck {
 	@Override
 	public String toString() {
 		return "Deck: " + deck + ".";
+	}
+
+	public int getNumDelt() {
+		return numDelt;
 	}
 }
