@@ -76,7 +76,16 @@ public class Game {
 			System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
 			
 			while (d.getHand().getValueOfHand() < 17) {
+				card = d.getCard();
+				d.dealerHand(card);
+				System.out.println("The dealer is dealt " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
+				if (d.getHand().getValueOfHand() > 21) {
+					System.out.println("Congragulations, the dealer busts and " + pName + " wins.");
+					// Add bet size to stack size
+				}
+				d.getHand().getValueOfHand();
 			}
+			System.out.println("The dealer stands at " + d.getHand().getValueOfHand());
 		}
 	}
 	
