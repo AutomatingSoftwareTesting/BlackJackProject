@@ -7,7 +7,6 @@ public class Player {
 	private int stackSize;
 	private int betSize;
 	
-	
 	public Player(String name) {
 		this(name, 100);
 	}
@@ -36,17 +35,6 @@ public class Player {
 	public void playerHand(Card card) {
 		hand.addCard(card);
 	}
-	
-	public void playerDecision(char decision) {
-		if (decision == 'H') {
-			
-		}
-		else {
-			
-		}
-		
-	}
-	
 	
 	
 // -------------------BELOW IS RANDOM ---------------------------
