@@ -1,5 +1,6 @@
 package com.skilldistillery.cards.blackjack;
 
+
 public class Player {
 	private String name;
 	private Hand hand;
@@ -32,13 +33,14 @@ public class Player {
 		// To DO
 	}
 	
-	public void addCard(Card card) {
+	public void playerHand(Card card) {
 		hand.addCard(card);
 	}
 	
 // -------------------BELOW IS RANDOM ---------------------------
 	
 	public Player() {
+		hand = new Hand();
 		this.name = getName();
 		this.stackSize = getStackSize();
 	}
@@ -56,8 +58,8 @@ public class Player {
 	}
 	
 	public int placeRandomBet() {
-		Integer [] bets = {5, 10, 20};
-		betSize = bets[(int)(Math.random() * 3)];
+		Integer [] bets = {1, 5, 10, 20};
+		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}
 }

@@ -1,45 +1,47 @@
 package com.skilldistillery.cards.blackjack;
 
 public class Game {
-	public void startSession() {
-		System.out.println("Welcome to the Skill Distillery Blackjack room.");
-		System.out.println("The dealer will stand on hands totaling 17 and above; including 'soft' 17.");
-		System.out.println("The player is not allowed to buy insurance.");
-		System.out.println("If either side reaches 21 they immdediately win the game.");
-		System.out.println("The table limits are $5 to $20" + "\n");
-		// The rules above may change as the game evolves. The first rule above favors the dealer; the second the player.
-	}
-	
 	public void play() {
+		// Create a new dealer and describe the rules at this casino
 		Dealer d = new Dealer();
+		String dname = d.getRandomName();
+		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dname + " said.");
+		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
+		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
+		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
+		System.out.println("Therefore, if someone reaches 21 they immdediately win the game. Good luck and have fun." + "\n");
+		// The rules above may change as the game evolves.
+		
+		// Create a new player. 
+		// In future, add option to allow more than one player vs. dealer.
 		Player p = new Player();
-		String pName = p.getName();
-		int pStackSize = p.getStackSize();
+		String pName = p.getRandomName();
+		int pStackSize = p.getRandomStackSize();
 		Card card;
 		
 		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
-		System.out.println(pName + " decides to bet $" + p.placeWager() + "." + "\n");
+		System.out.println(pName + " decides to bet $" + p.placeRandomBet() + "." + "\n");
 		
 		// Player gets dealt first card
 		card = d.getCard();
 		System.out.println(card);
-//		p.addCard(card);
+		p.playerHand(card);
 		
 		// Dealer gets dealt first card
 		card = d.getCard();
 		System.out.println(card);
-//		d.addCard(card);
+		d.dealerHand(card);
 //		
 		// Player gets dealt second card
 		card = d.getCard();
 		System.out.println(card);
-//		p.addCard(card);
+		p.playerHand(card);
 //		
 		// Dealer gets dealt second card
 		// This will need to be face down eventually
 		card = d.getCard();
 		System.out.println(card);
-//		d.addCard(card);
+		d.dealerHand(card);
 		
 		
 //		System.out.println("They are dealt " + playerCard1 + " and " + playerCard2 + ".");
@@ -52,4 +54,5 @@ public class Game {
 //		System.out.println(pName + ", the player in the first seat, has $" + pStack + ".");
 //		System.out.println(pName + " decides to bet $" + p.placeWager() + "." + "\n");
 	}
+	
 }

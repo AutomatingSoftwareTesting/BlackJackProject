@@ -6,9 +6,9 @@ import java.util.List;
 public class Hand {
 	private List<Card> hand = new ArrayList<>();
 	
+	public Hand() {};
+	
 	public void addCard(Card card) {
-		System.out.println(card);
-		System.out.println(hand);
 		hand.add(card);
 	}
 
