@@ -35,9 +35,9 @@ public class Game {
 		
 		// Dealer will get dealt a second card face down
 		// For now is below the next couple lines of logic
-		
-		System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println("The dealer, is showing a " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
+
+		System.out.println(pName + " is dealt " + p.getHand().getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer, is showing a " + d.getHand().getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
 		
 		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
 		card = d.getCard();
@@ -59,7 +59,7 @@ public class Game {
 				if (pDecision.equals("H")) {
 					card = d.getCard();
 					p.playerHand(card);
-					System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
+					System.out.println(pName + " is dealt " + p.getHand().getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
 					if (p.getHand().getValueOfHand() > 21) {
 						System.out.println("Sorry, " + pName + " busts and the dealer wins.");
 						// Subtract bet size from stack size
@@ -73,12 +73,12 @@ public class Game {
 			}
 			
 			// Dealer hand logic
-			System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
+			System.out.println("The dealer flips up their down card showing a hand of " + d.getHand().getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
 			
 			while (d.getHand().getValueOfHand() < 17) {
 				card = d.getCard();
 				d.dealerHand(card);
-				System.out.println("The dealer is dealt " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
+				System.out.println("The dealer is dealt " + d.getHand().getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
 				if (d.getHand().getValueOfHand() > 21) {
 					System.out.println("Congragulations, the dealer busts and " + pName + " wins.");
 					// Add bet size to stack size
