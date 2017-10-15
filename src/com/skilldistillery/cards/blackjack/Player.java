@@ -37,6 +37,8 @@ public class Player {
 		hand.addCard(card);
 	}
 	
+	
+	
 // -------------------BELOW IS RANDOM ---------------------------
 	
 	public Player() {
@@ -62,4 +64,5 @@ public class Player {
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}
+
 }

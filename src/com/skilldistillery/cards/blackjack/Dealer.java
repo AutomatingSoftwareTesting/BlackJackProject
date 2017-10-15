@@ -20,5 +20,10 @@ public class Dealer extends Player {
 	public void dealerHand(Card card) {
 		hand.addCard(card);
 	}
+	
+	// Had to add in order to get hand value. Why didn't it extend from Player?
+	public Hand getHand() {
+		return hand;
+	}
 
 }
