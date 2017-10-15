@@ -16,10 +16,11 @@ public class Game {
 		Player p = new Player();
 		String pName = p.getRandomName();
 		int pStackSize = p.getRandomStackSize();
+		int pBet = p.placeRandomBet();
 		Card card;
 		
 		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
-		System.out.println(pName + " decides to bet $" + p.placeRandomBet() + "." + "\n");
+		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
 		
 		// Player gets dealt first card; which is added to their hand
 		card = d.getCard();
@@ -97,10 +98,12 @@ public class Game {
 		if (pBusts) {
 			System.out.println("\n" + "Sorry, " + pName + ", you went over 21 and the dealer wins.");
 			// Subtract bet size from stack size
+			pStackSize -= pBet;
 		}
 		else if (dBusts) {
 			System.out.println("\n" + "Congragulations " + pName + ", the dealer busts and you win!.");
 			// Add bet size to stack size
+			pStackSize += pBet;
 		}
 		else if (p.getHand().getValueOfHand() == d.getHand().getValueOfHand()) {
 			System.out.println("\n" + "It's a push (tie).");
@@ -109,15 +112,17 @@ public class Game {
 		else if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
 			System.out.println("\n" + "Congragulations " + pName + ", you win!");
 			// Add bet size to stack size
+			pStackSize += pBet;
 		}
 		else {
 			System.out.println("\n" + "Sorry " + pName + ", the dealer wins.");
 			// Subtract bet size from stack size
+			pStackSize -= pBet;
 		}
 		
 		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
 		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
-		
+		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
 	}
 	
 	public void houseRules() {
@@ -125,7 +130,7 @@ public class Game {
 		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
 		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
 		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
-		System.out.println("Therefore, if someone reaches 21 they immdediately win the game. Good luck and have fun." + "\n");
+		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game. Good luck and have fun." + "\n");
 	}
 	
 }
