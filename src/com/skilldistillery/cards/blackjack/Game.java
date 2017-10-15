@@ -100,6 +100,9 @@ public class Game {
 			// Subtract bet size from stack size
 		}
 		
+		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
+		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
+		
 	}
 	
 	public void houseRules() {
