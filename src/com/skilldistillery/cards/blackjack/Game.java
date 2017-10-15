@@ -1,7 +1,10 @@
 package com.skilldistillery.cards.blackjack;
 
+import java.util.Scanner;
+
 public class Game {
 	public void play() {
+		Scanner sc = new Scanner(System.in);
 		// Create a new dealer and describe the rules at this casino
 		Dealer d = new Dealer();
 		String dName = d.getRandomName();
@@ -39,9 +42,27 @@ public class Game {
 		System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println(dName + ", the dealer, is showing a " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
 		
+		while (p.getHand().getValueOfHand() < 22) {
+			System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand):");
+			String pDecision = sc.nextLine().toUpperCase();
+			
+			if (pDecision.equals("H")) {
+				card = d.getCard();
+				p.playerHand(card);
+				System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
+				if (p.getHand().getValueOfHand() > 21) {
+					System.out.println("Sorry, " + pName + " busts and the dealer wins.");
+					// Subtract bet size from stack size
+				}
+				p.getHand().getValueOfHand();
+			}
+			else {
+				System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
+				break;
+			}
+		}
 		
-		System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand)":);
-	
+		
 		
 	}
 	

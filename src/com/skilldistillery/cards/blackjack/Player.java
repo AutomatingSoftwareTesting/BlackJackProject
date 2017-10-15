@@ -37,6 +37,16 @@ public class Player {
 		hand.addCard(card);
 	}
 	
+	public void playerDecision(char decision) {
+		if (decision == 'H') {
+			
+		}
+		else {
+			
+		}
+		
+	}
+	
 	
 	
 // -------------------BELOW IS RANDOM ---------------------------
