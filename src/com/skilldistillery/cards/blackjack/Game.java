@@ -33,14 +33,15 @@ public class Game {
 		card = d.getCard();
 		p.playerHand(card);
 		
-		// Dealer gets dealt a second card face down
-		// For now, moving below (or pretending we are NOT playing in US)
-		// Dealer gets dealt second card
-		card = d.getCard();
-		d.dealerHand(card);
+		// Dealer will get dealt a second card face down
+		// For now is below the next couple lines of logic
 		
 		System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println(dName + ", the dealer, is showing a " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer, is showing a " + d.getHand().toString() + " for a total of " + d.getHand().getValueOfHand() + ".");
+		
+		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
+		card = d.getCard();
+		d.dealerHand(card);
 		
 		while (p.getHand().getValueOfHand() < 22) {
 			System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand):");
@@ -60,6 +61,11 @@ public class Game {
 				System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
 				break;
 			}
+		}
+		
+		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
+		
+		while (d.getHand().getValueOfHand() < 17) {
 		}
 		
 		
