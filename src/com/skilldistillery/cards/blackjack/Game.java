@@ -87,6 +87,19 @@ public class Game {
 			}
 			System.out.println("The dealer stands at " + d.getHand().getValueOfHand());
 		}
+		
+		if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
+			System.out.println("Congragulations " + pName + ", you win!");
+			// Add bet size to stack size
+		}
+		else if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
+			System.out.println("It's a push (tie).");
+		}
+		else {
+			System.out.println("Sorry " + pName + ", the dealer wins.");
+			// Subtract bet size from stack size
+		}
+		
 	}
 	
 	public void houseRules() {
