@@ -43,33 +43,41 @@ public class Game {
 		card = d.getCard();
 		d.dealerHand(card);
 		
-		while (p.getHand().getValueOfHand() < 22) {
-			System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand):");
-			String pDecision = sc.nextLine().toUpperCase();
-			
-			if (pDecision.equals("H")) {
-				card = d.getCard();
-				p.playerHand(card);
-				System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
-				if (p.getHand().getValueOfHand() > 21) {
-					System.out.println("Sorry, " + pName + " busts and the dealer wins.");
-					// Subtract bet size from stack size
+		// Add check for blackjack. Dealer checks first, then player.
+		if (d.getHand().getValueOfHand() == 21) {
+			System.out.println("The dealer has 21. Sorry, you lose");
+		}
+		else if (p.getHand().getValueOfHand() == 21){
+			System.out.println("Congragulations " + pName + ", you win with blackjack.");
+		}
+		else {
+			// Player hand logic
+			while (p.getHand().getValueOfHand() < 22) {
+				System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand):");
+				String pDecision = sc.nextLine().toUpperCase();
+				
+				if (pDecision.equals("H")) {
+					card = d.getCard();
+					p.playerHand(card);
+					System.out.println(pName + " is dealt " + p.getHand().toString() + " for a total of " + p.getHand().getValueOfHand() + ".");
+					if (p.getHand().getValueOfHand() > 21) {
+						System.out.println("Sorry, " + pName + " busts and the dealer wins.");
+						// Subtract bet size from stack size
+					}
+					p.getHand().getValueOfHand();
 				}
-				p.getHand().getValueOfHand();
+				else {
+					System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
+					break;
+				}
 			}
-			else {
-				System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
-				break;
+			
+			// Dealer hand logic
+			System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
+			
+			while (d.getHand().getValueOfHand() < 17) {
 			}
 		}
-		
-		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + " for a point total of " + d.getHand().getValueOfHand() + ".");
-		
-		while (d.getHand().getValueOfHand() < 17) {
-		}
-		
-		
-		
 	}
 	
 	public void houseRules() {
