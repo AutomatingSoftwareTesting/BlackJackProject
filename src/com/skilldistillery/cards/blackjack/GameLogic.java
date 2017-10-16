@@ -3,24 +3,15 @@ package com.skilldistillery.cards.blackjack;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class GameDriver {
-	public static void main(String[] args) {
+public class GameLogic {
+	private String dName;
+	
+	public void startGame() {
 		Scanner sc = new Scanner(System.in);
-		String dName;
 		
-		// Requirement #1: Your program must NOT be contained in one procedural main(). You MUST design a OO class structure.
-		// Create a new dealer and describe the rules at this casino. The rules below may change as the game evolves.
 		Dealer d = new Dealer();
 		dName = d.getRandomName();
-		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
-		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
-		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
-		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
-		// Requirement #3: If a player or dealer is dealt 21 the game is over. Otherwise the player can choose to hit or stay.
-		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
-		// Requirement #5: The game is immediately over if either player gets above 21.
-		System.out.println("Finally, if someone goes over 22 at any point they immdediately lose the game.");
-		System.out.println("Good luck and have fun." + "\n");
+		houseRules();
 		
 		// Create a new player. 
 		// In future, add option to allow more than one player vs. dealer.
@@ -149,5 +140,19 @@ public class GameDriver {
 		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
 		
 		sc.close();
+	}
+	
+	public void houseRules() {
+		// Requirement #1: Your program must NOT be contained in one procedural main(). You MUST design a OO class structure.
+		// Describe the rules at this casino. The rules below may change as the game evolves.
+		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
+		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
+		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
+		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
+		// Requirement #3: If a player or dealer is dealt 21 the game is over. Otherwise the player can choose to hit or stay.
+		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
+		// Requirement #5: The game is immediately over if either player gets above 21.
+		System.out.println("Finally, if someone goes over 22 at any point they immdediately lose the game.");
+		System.out.println("Good luck and have fun." + "\n");
 	}
 }
