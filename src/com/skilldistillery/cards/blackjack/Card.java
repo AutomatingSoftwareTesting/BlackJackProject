@@ -1,7 +1,6 @@
 package com.skilldistillery.cards.blackjack;
 
 
-
 public class Card implements Comparable<Card> {
     private Rank rank;
     private Suit suit;
@@ -14,7 +13,7 @@ public class Card implements Comparable<Card> {
     public Card() {}
     
     public boolean isFaceUp() {
-    		// If not face don't want to show rank or suit.
+    		// If not face up don't want to show rank or suit; i.e. XX.
     		return true;
     }
 
@@ -24,6 +23,7 @@ public class Card implements Comparable<Card> {
     }
 
     public int compareTo(Card o) {
+    	// Not using for blackjack. However, will need for other card games later.
 	    	if (this.rank.ordinal() < o.rank.ordinal()) {
 	    		return -1;
 	    	}
@@ -34,21 +34,6 @@ public class Card implements Comparable<Card> {
 	    		return 0;
 	    	}
     }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Card other = (Card) obj;
-        if (rank != other.rank)
-        		return false;
-        if (suit != other.suit)
-            return false;
-        return true;
-    }
 
 	public Rank getRank() {
 		return rank;
@@ -58,5 +43,3 @@ public class Card implements Comparable<Card> {
 		return suit;
 	}
 }
-
-

@@ -25,5 +25,4 @@ public class Dealer extends Player {
 	public Hand getHand() {
 		return hand;
 	}
-
 }

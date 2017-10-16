@@ -28,14 +28,9 @@ public class Player {
 		return stackSize;
 	}
 	
-	public void placeBet(int bet) {
-		// To DO
-	}
-	
 	public void playerHand(Card card) {
 		hand.addCard(card);
 	}
-	
 	
 // -------------------BELOW IS RANDOM ---------------------------
 	
@@ -62,5 +57,4 @@ public class Player {
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}
-
 }

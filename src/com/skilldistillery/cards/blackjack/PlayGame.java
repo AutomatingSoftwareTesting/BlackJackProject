@@ -6,5 +6,4 @@ public class PlayGame {
 		GameLogic g = new GameLogic();
 		g.startGame();
 	}
-
 }

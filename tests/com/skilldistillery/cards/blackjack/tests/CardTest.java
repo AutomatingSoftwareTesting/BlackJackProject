@@ -63,5 +63,4 @@ public class CardTest {
 		assertEquals(11, cAh.getRank().getValue());
 		assertEquals(10, cTd.getRank().getValue());
 	}
-
 }

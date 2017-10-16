@@ -17,7 +17,7 @@ public enum Rank {
 	
 	private int value;  
 	// This value ranking is specific to blackjack
-	// Can use index value +2 for ranking for other card games
+	// Can use index value +2 for ranking in other card games
 	private String rankDisplay;
 
 	private Rank(String rankDisplay, int value) {

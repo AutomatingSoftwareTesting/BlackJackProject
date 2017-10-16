@@ -21,6 +21,4 @@ public enum Suit {
 	public char getSuitImage() {
 		return suitImage;
 	}
-	
-	
 }

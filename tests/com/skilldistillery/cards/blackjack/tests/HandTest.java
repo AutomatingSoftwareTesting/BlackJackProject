@@ -56,5 +56,4 @@ public class HandTest {
 	public void test_blackjack() {
 		assertEquals(21, blackjack.getValueOfHand());
 	}
-
 }
