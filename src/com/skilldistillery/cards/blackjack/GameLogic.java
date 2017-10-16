@@ -13,9 +13,9 @@ public class GameLogic {
 	private Card card;
 	private int pBet;
 	private String pDecision;
-	boolean pBusts;
-	boolean dBusts;
-	boolean blackjack;
+	private boolean pBusts;
+	private boolean dBusts;
+	private boolean blackjack;
 	
 	public void startGame() {
 		dealer();
