@@ -4,60 +4,27 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameLogic {
+	private Scanner sc = new Scanner(System.in);
+	private Dealer d = new Dealer();
+	private Player p = new Player();
 	private String dName;
+	private String pName;
+	private int pStackSize;
+	private Card card;
+	private int pBet;
+	private String pDecision;
+	boolean pBusts;
+	boolean dBusts;
 	
 	public void startGame() {
-		Scanner sc = new Scanner(System.in);
-		
-		Dealer d = new Dealer();
-		dName = d.getRandomName();
+		dealer();
 		houseRules();
+		player();
+		playerBet();
+		initialDeal();
 		
-		// Create a new player. 
-		// In future, add option to allow more than one player vs. dealer.
-		Player p = new Player();
-		String pName = p.getRandomName();
-		int pStackSize = p.getRandomStackSize();
-		Card card;
-		
-		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
-		int pBet = 0;
-		try {
-			while (pBet < 1 || pBet > 20) {
-				System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
-				pBet = sc.nextInt();
-			}
-		} catch (InputMismatchException e) {
-			System.out.println("Please re-run the game and enter a whole number for the bet size.");
-			System.exit(1);
-		}
-		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
-		
-		// Requirement #2: When the game begins both the player and dealer are dealt two cards.
-		// Player gets dealt first card; which is added to their hand
-		card = d.getCard();
-		p.playerHand(card);
-		
-		// Dealer gets dealt first card; which is added to their hand (different than the players)
-		card = d.getCard();
-		d.dealerHand(card);
-		
-		// Player gets dealt second card
-		card = d.getCard();
-		p.playerHand(card);
-		
-		// Dealer will get dealt a second card face down
-		// Until isCardFaceUp() is working this is below the next couple lines of logic
-
-		System.out.println(pName + " is dealt " + p.getHand().getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println("The dealer, is showing a " + d.getHand().getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
-		
-		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
-		card = d.getCard();
-		d.dealerHand(card);
-		
-		boolean pBusts = false;
-		boolean dBusts = false;
+		pBusts = false;
+		dBusts = false;
 		// Add check for blackjack. Dealer checks first, then player.
 		if (d.getHand().getValueOfHand() == 21) {
 			System.out.println("The dealer has blackjack (21). Sorry " + pName + ", you lose.");
@@ -109,41 +76,18 @@ public class GameLogic {
 			}
 		}
 		
-		// Determine winner and new stack size
-		if (pBusts) {
-			System.out.println("\n" + "Sorry, " + pName + ", you went over 21 and the dealer wins.");
-			// Subtract bet size from stack size
-			pStackSize -= pBet;
-		}
-		else if (dBusts) {
-			System.out.println("\n" + "Congragulations " + pName + ", the dealer busts and you win!");
-			// Add bet size to stack size
-			pStackSize += pBet;
-		}
-		else if (p.getHand().getValueOfHand() == d.getHand().getValueOfHand()) {
-			System.out.println("\n" + "It's a push (tie).");
-			// Stack sizes don't change
-		}
-		else if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
-			System.out.println("\n" + "Congragulations " + pName + ", you win!");
-			// Add bet size to stack size
-			pStackSize += pBet;
-		}
-		else {
-			System.out.println("\n" + "Sorry " + pName + ", the dealer wins.");
-			// Subtract bet size from stack size
-			pStackSize -= pBet;
-		}
-		
-		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
-		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
+		handWinner();
+		handSummary();
 		
 		sc.close();
 	}
 	
-	public void houseRules() {
+	public void dealer() {
 		// Requirement #1: Your program must NOT be contained in one procedural main(). You MUST design a OO class structure.
+		dName = d.getRandomName();
+	}
+	
+	public void houseRules() {
 		// Describe the rules at this casino. The rules below may change as the game evolves.
 		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
 		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
@@ -154,5 +98,80 @@ public class GameLogic {
 		// Requirement #5: The game is immediately over if either player gets above 21.
 		System.out.println("Finally, if someone goes over 22 at any point they immdediately lose the game.");
 		System.out.println("Good luck and have fun." + "\n");
+	}
+	
+	public void player() {
+		pName = p.getRandomName();
+		pStackSize = p.getRandomStackSize();
+	}
+	
+	public void playerBet() {
+		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
+		int pBet = 0;
+		try {
+			while (pBet < 1 || pBet > 20) {
+				System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
+				pBet = sc.nextInt();
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Please re-run the game and enter a whole number for the bet size.");
+			System.exit(1);
+		}
+		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
+	}
+	
+	public void initialDeal() {
+		// Requirement #2: When the game begins both the player and dealer are dealt two cards.
+		// Player gets dealt first card; which is added to their hand
+		card = d.getCard();
+		p.playerHand(card);
+		
+		// Dealer gets dealt first card; which is added to their hand (different than the players)
+		card = d.getCard();
+		d.dealerHand(card);
+		
+		// Player gets dealt second card
+		card = d.getCard();
+		p.playerHand(card);
+		
+		// Dealer will get dealt a second card face down
+		// Until isCardFaceUp() is working this is below the next couple lines of logic
+
+		System.out.println(pName + " is dealt " + p.getHand().getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer, is showing a " + d.getHand().getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
+		
+		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
+		card = d.getCard();
+		d.dealerHand(card);
+	}
+	
+	public void handWinner() {
+		// Determine winner and new stack size
+		if (pBusts) {
+			System.out.println("\n" + "Sorry, " + pName + ", you went over 21 and the dealer wins.");
+			pStackSize -= pBet;
+		}
+		else if (dBusts) {
+			System.out.println("\n" + "Congragulations " + pName + ", the dealer busts and you win!");
+			pStackSize += pBet;
+		}
+		else if (p.getHand().getValueOfHand() == d.getHand().getValueOfHand()) {
+			// Stack sizes don't change
+			System.out.println("\n" + "It's a push (tie).");
+		}
+		else if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
+			System.out.println("\n" + "Congragulations " + pName + ", you win!");
+			pStackSize += pBet;
+		}
+		else {
+			System.out.println("\n" + "Sorry " + pName + ", the dealer wins.");
+			pStackSize -= pBet;
+		}
+	}
+	
+	public void handSummary() {
+		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
+		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
 	}
 }
