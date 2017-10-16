@@ -33,7 +33,6 @@ public class GameDriver {
 		int pBet = 0;
 		try {
 			while (pBet < 1 || pBet > 20) {
-				System.out.println("Please bet within the table limits.");
 				System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
 				pBet = sc.nextInt();
 			}
@@ -80,7 +79,7 @@ public class GameDriver {
 			while (p.getHand().getValueOfHand() < 22) {
 				System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand): ");
 				String pDecision = sc.next().toUpperCase();
-				
+				// Player will stand on all input except for "H" or "h".
 				if (pDecision.equals("H")) {
 					card = d.getCard();
 					p.playerHand(card);
