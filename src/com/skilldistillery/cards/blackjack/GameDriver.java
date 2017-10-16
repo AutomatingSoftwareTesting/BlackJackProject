@@ -1,15 +1,17 @@
 package com.skilldistillery.cards.blackjack;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameDriver {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		String dName;
 		
 		// Requirement #1: Your program must NOT be contained in one procedural main(). You MUST design a OO class structure.
 		// Create a new dealer and describe the rules at this casino. The rules below may change as the game evolves.
 		Dealer d = new Dealer();
-		String dName = d.getRandomName();
+		dName = d.getRandomName();
 		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
 		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
 		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
@@ -25,12 +27,20 @@ public class GameDriver {
 		Player p = new Player();
 		String pName = p.getRandomName();
 		int pStackSize = p.getRandomStackSize();
-//		int pBet = p.placeRandomBet();  Other players will be added later
 		Card card;
 		
 		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
-		System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
-		int pBet = sc.nextInt();
+		int pBet = 0;
+		try {
+			while (pBet < 1 || pBet > 20) {
+				System.out.println("Please bet within the table limits.");
+				System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
+				pBet = sc.nextInt();
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Please re-run the game and enter a whole number for the bet size.");
+			System.exit(1);
+		}
 		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
 		
 		// Requirement #2: When the game begins both the player and dealer are dealt two cards.
