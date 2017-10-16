@@ -15,6 +15,7 @@ public class GameLogic {
 	private String pDecision;
 	boolean pBusts;
 	boolean dBusts;
+	boolean blackjack;
 	
 	public void startGame() {
 		dealer();
@@ -22,60 +23,11 @@ public class GameLogic {
 		player();
 		playerBet();
 		initialDeal();
-		
-		pBusts = false;
-		dBusts = false;
-		// Add check for blackjack. Dealer checks first, then player.
-		if (d.getHand().getValueOfHand() == 21) {
-			System.out.println("The dealer has blackjack (21). Sorry " + pName + ", you lose.");
+		blackjackCheck();
+		if (! blackjack) {
+			playerHandLogic();
+			dealerHandLogic();
 		}
-		else if (p.getHand().getValueOfHand() == 21){
-			System.out.println("Congragulations " + pName + ", you win with blackjack.");
-		}
-		else {
-			// Player hand logic
-			while (p.getHand().getValueOfHand() < 22) {
-				System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand): ");
-				String pDecision = sc.next().toUpperCase();
-				// Player will stand on all input except for "H" or "h".
-				if (pDecision.equals("H")) {
-					card = d.getCard();
-					p.playerHand(card);
-					System.out.println(pName + " is dealt a " + card + " for a hand of " + p.getHand().getHand() + " totaling " + p.getHand().getValueOfHand() + ".");
-					if (p.getHand().getValueOfHand() > 21) {
-						pBusts = true;
-						break;
-					}
-					p.getHand().getValueOfHand();
-				}
-				else {
-					if (! pBusts) {
-						System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
-					}
-					break;
-				}
-			}
-			// Requirement #4: Once the player has completed their turn the dealer will begin their turn.
-			// Dealer hand logic
-			System.out.println("The dealer flips up their down card showing a hand of " + d.getHand().getHand() + "; totaling " + d.getHand().getValueOfHand() + ".");
-			
-			if (! pBusts) {
-				while (d.getHand().getValueOfHand() < 17) {
-					card = d.getCard();
-					d.dealerHand(card);
-					System.out.println("The dealer is dealt a " + card + " for a hand of " + d.getHand().getHand() + " totaling " + d.getHand().getValueOfHand() + ".");
-					if (d.getHand().getValueOfHand() > 21) {
-						dBusts = true;
-						break;
-					}
-					d.getHand().getValueOfHand();
-				}
-				if (! dBusts) {
-					System.out.println("The dealer stands at " + d.getHand().getValueOfHand());
-				}
-			}
-		}
-		
 		handWinner();
 		handSummary();
 		
@@ -96,7 +48,7 @@ public class GameLogic {
 		// Requirement #3: If a player or dealer is dealt 21 the game is over. Otherwise the player can choose to hit or stay.
 		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
 		// Requirement #5: The game is immediately over if either player gets above 21.
-		System.out.println("Finally, if someone goes over 22 at any point they immdediately lose the game.");
+		System.out.println("Finally, if someone goes over 21 at any point they immdediately lose the game.");
 		System.out.println("Good luck and have fun." + "\n");
 	}
 	
@@ -145,6 +97,68 @@ public class GameLogic {
 		d.dealerHand(card);
 	}
 	
+	public void blackjackCheck() {
+		// Add check for blackjack. Dealer checks first, then player.
+		// Could add logic here later if we want to offer insurance 
+		// It is in the player's best interest to decline.
+		blackjack = false;
+		if (d.getHand().getValueOfHand() == 21) {
+			System.out.println("The dealer has blackjack (21). Sorry " + pName + ", you lose.");
+			blackjack = true;
+		}
+		if (p.getHand().getValueOfHand() == 21){
+			System.out.println("Congragulations " + pName + ", you win with blackjack.");
+			blackjack = true;
+		}
+	}
+	
+	public void playerHandLogic() {
+		pBusts = false;
+		while (p.getHand().getValueOfHand() < 22) {
+			System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand): ");
+			pDecision = sc.next().toUpperCase();
+			// Player will stand on all input except for "H" or "h".
+			if (pDecision.equals("H")) {
+				card = d.getCard();
+				p.playerHand(card);
+				System.out.println(pName + " is dealt a " + card + " for a hand of " + p.getHand().getHand() + " totaling " + p.getHand().getValueOfHand() + ".");
+				if (p.getHand().getValueOfHand() > 21) {
+					pBusts = true;
+					break;
+				}
+				p.getHand().getValueOfHand();
+			}
+			else {
+				if (! pBusts) {
+					System.out.println(pName + " stands at " + p.getHand().getValueOfHand());
+				}
+				break;
+			}
+		}
+	}
+	
+	public void dealerHandLogic() {
+		// Requirement #4: Once the player has completed their turn the dealer will begin their turn.
+		dBusts = false;
+		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand().getHand() + "; totaling " + d.getHand().getValueOfHand() + ".");
+		
+		if (! pBusts) {
+			while (d.getHand().getValueOfHand() < 17) {
+				card = d.getCard();
+				d.dealerHand(card);
+				System.out.println("The dealer is dealt a " + card + " for a hand of " + d.getHand().getHand() + " totaling " + d.getHand().getValueOfHand() + ".");
+				if (d.getHand().getValueOfHand() > 21) {
+					dBusts = true;
+					break;
+				}
+				d.getHand().getValueOfHand();
+			}
+			if (! dBusts) {
+				System.out.println("The dealer stands at " + d.getHand().getValueOfHand());
+			}
+		}
+	}
+	
 	public void handWinner() {
 		// Determine winner and new stack size
 		if (pBusts) {
@@ -172,6 +186,7 @@ public class GameLogic {
 	public void handSummary() {
 		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
-		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
+		// The player's new stack size broke during one of the refactors.
+//		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
 	}
 }
