@@ -23,6 +23,7 @@ public class GameLogic {
 		dealer();
 		houseRules();
 		player();
+		
 		playerBet();
 		initialDeal();
 		blackjackCheck();
@@ -69,9 +70,14 @@ public class GameLogic {
 			}
 		} catch (InputMismatchException e) {
 			if(!sc.hasNextInt()) {
-			    sc.next();
-			    System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
-			    System.out.println("Therefore, you'll bet the table minimum for this hand.");
+			    if (sc.next().equalsIgnoreCase("end")){
+			    		System.out.println("Thanks for playing.");
+			    		System.exit(1);
+			    }
+			    else {
+			    		System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
+			    		System.out.println("Therefore, you'll bet the table minimum for this hand.");
+			    }
 			}
 			pBet = tableMin;
 		}
