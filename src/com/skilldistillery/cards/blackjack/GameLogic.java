@@ -16,6 +16,8 @@ public class GameLogic {
 	private boolean pBusts;
 	private boolean dBusts;
 	private boolean blackjack;
+	private int tableMin = 1;
+	private int tableMax = 20;
 	
 	public void startGame() {
 		dealer();
@@ -42,7 +44,7 @@ public class GameLogic {
 	public void houseRules() {
 		// Describe the rules at this casino. The rules below may change as the game evolves.
 		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
-		System.out.println("The limits for this table range from $1 to $20; in increments of $1.");
+		System.out.println("The limits for this table range from $" + tableMin + " to $" + tableMax + "; in increments of $" + tableMin + ".");
 		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
 		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
 		// Requirement #3: If a player or dealer is dealt 21 the game is over. Otherwise the player can choose to hit or stay.
@@ -61,13 +63,17 @@ public class GameLogic {
 		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
 		int pBet = 0;
 		try {
-			while (pBet < 1 || pBet > 20) {
-				System.out.println(pName + ", how much do you want to bet ($1 to $20)? ");
+			while (pBet < tableMin || pBet > tableMax) {
+				System.out.println(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
 				pBet = sc.nextInt();
 			}
 		} catch (InputMismatchException e) {
-			System.out.println("Please re-run the game and enter a whole number for the bet size.");
-			System.exit(1);
+			if(!sc.hasNextInt()) {
+			    sc.next();
+			    System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
+			    System.out.println("Therefore, you'll bet the table minimum for this hand.");
+			}
+			pBet = tableMin;
 		}
 		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
 	}
