@@ -127,6 +127,7 @@ public class GameLogic {
 		if (p.getHand().getValueOfHand() == 21){
 			System.out.println("Congragulations " + pName + ", you win with blackjack.");
 			blackjack = true;
+			pStackSize = pBet * 3 / 2;
 		}
 	}
 	
