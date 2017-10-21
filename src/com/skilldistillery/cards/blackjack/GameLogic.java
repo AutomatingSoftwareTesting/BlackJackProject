@@ -24,15 +24,17 @@ public class GameLogic {
 		houseRules();
 		player();
 		
-		playerBet();
-		initialDeal();
-		blackjackCheck();
-		if (! blackjack) {
-			playerHandLogic();
-			dealerHandLogic();
-		}
-		handWinner();
-		handSummary();
+		do {
+			playerBet();
+			initialDeal();
+			blackjackCheck();
+			if (! blackjack) {
+				playerHandLogic();
+				dealerHandLogic();
+			}
+			handWinner();
+			handSummary();
+		} while (pBet != 0);
 		
 		sc.close();
 	}
@@ -62,26 +64,27 @@ public class GameLogic {
 	
 	public void playerBet() {
 		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
-		int pBet = 0;
+		int pBet = -1;
 		try {
-			while (pBet < tableMin || pBet > tableMax) {
+			while (pBet < (tableMin - 1) || pBet > tableMax) {
 				System.out.println(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
 				pBet = sc.nextInt();
 			}
 		} catch (InputMismatchException e) {
 			if(!sc.hasNextInt()) {
-			    if (sc.next().equalsIgnoreCase("end")){
-			    		System.out.println("Thanks for playing.");
-			    		System.exit(1);
-			    }
-			    else {
-			    		System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
-			    		System.out.println("Therefore, you'll bet the table minimum for this hand.");
-			    }
+			    sc.next();
+		    		System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
+		    		System.out.println("Therefore, you'll bet the table minimum for this hand.");
 			}
 			pBet = tableMin;
 		}
-		System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
+		if (pBet == 0) {
+			System.out.println("Thanks for playing.");
+			System.exit(1);
+		}
+		else {
+			System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
+		}
 	}
 	
 	public void initialDeal() {
