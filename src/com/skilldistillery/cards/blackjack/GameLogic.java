@@ -57,7 +57,7 @@ public class GameLogic {
 		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
 		// Requirement #5: The game is immediately over if either player gets above 21.
 		System.out.println("Finally, if someone goes over 21 at any point they immdediately lose the game.");
-		System.out.println("Good luck and have fun.");
+		System.out.println("You can leave the table at any time by entering a bet size of '0'. Good luck and have fun!");
 	}
 	
 	public void player() {
@@ -70,7 +70,7 @@ public class GameLogic {
 		int pBet = -1;
 		try {
 			while (pBet < (tableMin - 1) || pBet > tableMax) {
-				System.out.println(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
+				System.out.print(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
 				pBet = sc.nextInt();
 			}
 		} catch (InputMismatchException e) {
@@ -133,7 +133,7 @@ public class GameLogic {
 	public void playerHandLogic() {
 		pBusts = false;
 		while (p.getHand().getValueOfHand() < 22) {
-			System.out.println(pName + " what do you want to do? ('H' = Hit, 'S' = Stand): ");
+			System.out.print(pName + " what do you want to do? ('H' = Hit, 'S' = Stand): ");
 			pDecision = sc.next().toUpperCase();
 			// Player will stand on all input except for "H" or "h".
 			if (pDecision.equals("H")) {
