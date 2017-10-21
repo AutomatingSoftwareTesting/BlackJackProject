@@ -34,7 +34,8 @@ public class GameLogic {
 			}
 			handWinner();
 			handSummary();
-		} while (pBet != 0);
+			d.shuffle();
+		} while (pBet == 0);
 		
 		sc.close();
 	}
@@ -54,7 +55,7 @@ public class GameLogic {
 		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
 		// Requirement #5: The game is immediately over if either player gets above 21.
 		System.out.println("Finally, if someone goes over 21 at any point they immdediately lose the game.");
-		System.out.println("Good luck and have fun." + "\n");
+		System.out.println("Good luck and have fun.");
 	}
 	
 	public void player() {
@@ -63,7 +64,7 @@ public class GameLogic {
 	}
 	
 	public void playerBet() {
-		System.out.println(pName + ", the player in the first seat, has $" + pStackSize + ".");
+		System.out.println("\n" + pName + ", the player in the first seat, has $" + pStackSize + ".");
 		int pBet = -1;
 		try {
 			while (pBet < (tableMin - 1) || pBet > tableMax) {
@@ -79,7 +80,7 @@ public class GameLogic {
 			pBet = tableMin;
 		}
 		if (pBet == 0) {
-			System.out.println("Thanks for playing.");
+			System.out.println("Thanks for playing" + pName + "! See you next time.");
 			System.exit(1);
 		}
 		else {
