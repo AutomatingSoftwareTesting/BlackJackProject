@@ -36,6 +36,10 @@ public class Player {
 		hand = new Hand();
 	}
 	
+	public void setStackSize(int stackSize) {
+		this.stackSize = stackSize;
+	}
+	
 // -------------------BELOW IS RANDOM ---------------------------
 	
 	public Player() {
@@ -61,4 +65,5 @@ public class Player {
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}
+
 }

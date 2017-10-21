@@ -26,18 +26,17 @@ public class GameLogic {
 		
 		do {
 			d.shuffle();
-			playerBet();
+			int b = playerBet();
 			initialDeal();
 			blackjackCheck();
 			if (! blackjack) {
 				playerHandLogic();
 				dealerHandLogic();
 			}
-			handWinner();
-			handSummary();
+			handSummary(handWinner(b));
 			p.removeCardsFromPlayerHand();
 			d.removeCardsFromDealerHand();
-		} while (pBet == 0);
+		} while (pBet != 0);
 		
 		sc.close();
 	}
@@ -65,7 +64,7 @@ public class GameLogic {
 		pStackSize = p.getRandomStackSize();
 	}
 	
-	public void playerBet() {
+	public int playerBet() {
 		System.out.println("\n" + pName + ", the player in the first seat, has $" + pStackSize + ".");
 		int pBet = -1;
 		try {
@@ -88,6 +87,7 @@ public class GameLogic {
 		else {
 			System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
 		}
+		return pBet;
 	}
 	
 	public void initialDeal() {
@@ -177,7 +177,8 @@ public class GameLogic {
 		}
 	}
 	
-	public void handWinner() {
+	public int handWinner(int b) {
+		pBet = b;
 		// Determine winner and new stack size
 		if (pBusts) {
 			System.out.println("\n" + "Sorry, " + pName + ", you went over 21 and the dealer wins.");
@@ -199,12 +200,13 @@ public class GameLogic {
 			System.out.println("\n" + "Sorry " + pName + ", the dealer wins.");
 			pStackSize -= pBet;
 		}
+		return pStackSize;
 	}
 	
-	public void handSummary() {
+	public void handSummary(int s) {
+		p.setStackSize(s);
 		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
-		// The player's new stack size broke during one of the refactors.
-//		System.out.println(pName + "'s new stack size is "  + pStackSize + ".");
+		System.out.println(pName + "'s new stack size is "  + p.getStackSize() + ".");
 	}
 }
