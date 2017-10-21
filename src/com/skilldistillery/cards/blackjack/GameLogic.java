@@ -25,6 +25,7 @@ public class GameLogic {
 		player();
 		
 		do {
+			d.shuffle();
 			playerBet();
 			initialDeal();
 			blackjackCheck();
@@ -34,7 +35,8 @@ public class GameLogic {
 			}
 			handWinner();
 			handSummary();
-			d.shuffle();
+			p.removeCardsFromPlayerHand();
+			d.removeCardsFromDealerHand();
 		} while (pBet == 0);
 		
 		sc.close();
@@ -80,7 +82,7 @@ public class GameLogic {
 			pBet = tableMin;
 		}
 		if (pBet == 0) {
-			System.out.println("Thanks for playing" + pName + "! See you next time.");
+			System.out.println("Thanks for playing " + pName + "! See you next time.");
 			System.exit(1);
 		}
 		else {

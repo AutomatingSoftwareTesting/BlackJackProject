@@ -26,6 +26,10 @@ public class Dealer extends Player {
 		hand.addCard(card);
 	}
 	
+	public void removeCardsFromDealerHand() {
+		hand = new Hand();
+	}
+	
 	// Had to add in order to get hand value. Why didn't it extend from Player?
 	public Hand getHand() {
 		return hand;

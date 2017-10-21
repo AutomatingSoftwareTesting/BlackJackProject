@@ -32,6 +32,10 @@ public class Player {
 		hand.addCard(card);
 	}
 	
+	public void removeCardsFromPlayerHand() {
+		hand = new Hand();
+	}
+	
 // -------------------BELOW IS RANDOM ---------------------------
 	
 	public Player() {
