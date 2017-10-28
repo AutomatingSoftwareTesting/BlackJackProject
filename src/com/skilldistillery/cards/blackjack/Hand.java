@@ -17,9 +17,20 @@ public class Hand {
 	}
 	
 	public int getValueOfHand() {
+		// Add multiple values for Aces
+		// Liked this solution the most: https://github.com/HunterKir/BlackJackProject/blob/master/src/com/skilldistillery/cards/blackjack/Hand.java
 		int hv = 0;
+		int aces = 0;
 		for (Card card : hand) {
 			hv += card.getRank().getValue();
+			if (card.getRank().getValue() == 11);
+				aces++;
+		}
+		while (aces > 0) {
+			if (hv > 21) {
+				hv -= 10;
+			}
+			aces--;
 		}
 		return hv;
 	}

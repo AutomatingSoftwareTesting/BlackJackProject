@@ -56,4 +56,14 @@ public class HandTest {
 	public void test_blackjack() {
 		assertEquals(21, blackjack.getValueOfHand());
 	}
+	
+	@Test
+	public void test_ace_values() {
+		Hand a = new Hand();
+		a.addCard(new Card(Rank.TWO, Suit.SPADES));
+		a.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		assertEquals(13, a.getValueOfHand());
+		a.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		assertEquals(14, a.getValueOfHand());
+	}
 }
