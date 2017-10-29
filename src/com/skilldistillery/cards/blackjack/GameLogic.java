@@ -9,15 +9,15 @@ public class GameLogic {
 	private Player p = new Player();
 	private String dName;
 	private String pName;
-	private int pStackSize;
+	private double pStackSize;
 	private Card card;
-	private int pBet;
+	private double pBet;
 	private String pDecision;
 	private boolean pBusts;
 	private boolean dBusts;
 	private boolean blackjack;
-	private int tableMin = 1;
-	private int tableMax = 20;
+	private double tableMin = 1;
+	private double tableMax = 20;
 	
 	public void startGame() {
 		dealer();
@@ -26,7 +26,7 @@ public class GameLogic {
 		
 		do {
 			d.shuffle();
-			int b = playerBet();
+			double b = playerBet();
 			initialDeal();
 			blackjackCheck();
 			if (! blackjack) {
@@ -64,9 +64,9 @@ public class GameLogic {
 		pStackSize = p.getRandomStackSize();
 	}
 	
-	public int playerBet() {
+	public double playerBet() {
 		System.out.println("\n" + pName + ", the player in the first seat, has $" + pStackSize + ".");
-		int pBet = -1;
+		double pBet = -1;
 		try {
 			while (pBet < (tableMin - 1) || pBet > tableMax) {
 				System.out.print(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
@@ -178,7 +178,7 @@ public class GameLogic {
 		}
 	}
 	
-	public int handWinner(int b) {
+	public double handWinner(double b) {
 		pBet = b;
 		// Determine winner and new stack size
 		if (pBusts) {
@@ -204,7 +204,7 @@ public class GameLogic {
 		return pStackSize;
 	}
 	
-	public void handSummary(int s) {
+	public void handSummary(double s) {
 		p.setStackSize(s);
 		System.out.println(pName + "'s final hand was " + p.getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println("The dealer's final hand was " + d.getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");

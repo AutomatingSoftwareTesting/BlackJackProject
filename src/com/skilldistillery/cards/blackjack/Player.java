@@ -4,14 +4,14 @@ package com.skilldistillery.cards.blackjack;
 public class Player {
 	private String name;
 	private Hand hand;
-	private int stackSize;
-	private int betSize;
+	private double stackSize;
+	private double betSize;
 	
 	public Player(String name) {
 		this(name, 100);
 	}
 	
-	public Player(String name, int stackSize) {
+	public Player(String name, double stackSize) {
 		this.name = name;
 		this.stackSize = stackSize;
 	}
@@ -24,7 +24,7 @@ public class Player {
 		return name;
 	}
 	
-	public int getStackSize() {
+	public double getStackSize() {
 		return stackSize;
 	}
 	
@@ -36,7 +36,7 @@ public class Player {
 		hand = new Hand();
 	}
 	
-	public void setStackSize(int stackSize) {
+	public void setStackSize(double stackSize) {
 		this.stackSize = stackSize;
 	}
 	
@@ -54,13 +54,13 @@ public class Player {
 		return name;
 	}
 
-	public int getRandomStackSize() {
+	public double getRandomStackSize() {
 		Integer [] stacks = {25, 50, 100, 100, 100, 200, 500};
 		stackSize = stacks[(int)(Math.random() * 7)];
 		return stackSize;
 	}
 	
-	public int placeRandomBet() {
+	public double placeRandomBet() {
 		Integer [] bets = {1, 5, 10, 20};
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
