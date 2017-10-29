@@ -34,15 +34,14 @@ public class GameLogic {
 				dealerHandLogic();
 			}
 			handSummary(handWinner(b));
-			p.removeCardsFromPlayerHand();
-			d.removeCardsFromDealerHand();
+			p.getHand().surrenderHand();
+			d.getHand().surrenderHand();
 		} while (pBet != 0);
 		
 		sc.close();
 	}
 	
 	public void dealer() {
-		// Requirement #1: Your program must NOT be contained in one procedural main(). You MUST design a OO class structure.
 		dName = d.getRandomName();
 	}
 	
@@ -91,7 +90,6 @@ public class GameLogic {
 	}
 	
 	public void initialDeal() {
-		// Requirement #2: When the game begins both the player and dealer are dealt two cards.
 		// Player gets dealt first card; which is added to their hand
 		card = d.getCard();
 		p.playerHand(card);
@@ -157,7 +155,6 @@ public class GameLogic {
 	}
 	
 	public void dealerHandLogic() {
-		// Requirement #4: Once the player has completed their turn the dealer will begin their turn.
 		dBusts = false;
 		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + "; totaling " + d.getHand().getValueOfHand() + ".");
 		

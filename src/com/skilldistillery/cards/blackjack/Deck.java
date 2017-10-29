@@ -26,6 +26,10 @@ public class Deck {
     		return deck.remove(0);
     }
     
+    public int getNumDelt() {
+    	return numDelt;
+    }
+    
 	public List<Card> getDeck() {
 		return deck;
 	}
@@ -33,9 +37,5 @@ public class Deck {
 	@Override
 	public String toString() {
 		return "Deck: " + deck + ".";
-	}
-
-	public int getNumDelt() {
-		return numDelt;
 	}
 }

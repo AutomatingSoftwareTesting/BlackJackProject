@@ -29,11 +29,7 @@ public class Player {
 	}
 	
 	public void playerHand(Card card) {
-		hand.addCard(card);
-	}
-	
-	public void removeCardsFromPlayerHand() {
-		hand = new Hand();
+		this.hand.addCard(card);
 	}
 	
 	public void setStackSize(double stackSize) {
@@ -65,5 +61,4 @@ public class Player {
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}
-
 }

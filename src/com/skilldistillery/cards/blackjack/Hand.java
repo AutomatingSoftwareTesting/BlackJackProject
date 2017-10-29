@@ -9,20 +9,18 @@ public class Hand {
 	public Hand() {};
 	
 	public void addCard(Card card) {
-		hand.add(card);
+		this.hand.add(card);
 	}
 	
-	public void clearHand() {
-		hand.clear();
+	public void surrenderHand() {
+		this.hand.clear();
 	}
 
 	public List<Card> getHand() {
-		return hand;
+		return this.hand;
 	}
 	
 	public int getValueOfHand() {
-		// Add multiple values for Aces
-		// Liked this solution the most: https://github.com/HunterKir/BlackJackProject/blob/master/src/com/skilldistillery/cards/blackjack/Hand.java
 		int hv = 0;
 		int aces = 0;
 		for (Card card : hand) {
@@ -39,14 +37,8 @@ public class Hand {
 		return hv;
 	}
 
-	public Hand(List<Card> hand) {
-		this.hand = hand;
-	}
-
 	@Override
 	public String toString() {
 		return "" + hand;
 	}
-	
-	
 }

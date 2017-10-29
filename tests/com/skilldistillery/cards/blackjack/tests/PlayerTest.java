@@ -14,7 +14,7 @@ public class PlayerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		p = new Player("Jason");
+//		p = new Player("Jason");
 		np = new Player("Bob", 250);
 	}
 
@@ -23,15 +23,15 @@ public class PlayerTest {
 		p = null;
 	}
 
-	@Test
-	public void test_name() {
-		assertEquals("Jason", p.getName());
-	} 
+//	@Test
+//	public void test_name() {
+//		assertEquals("Jason", p.getName());
+//	} 
 	
-	@Test
-	public void test_default_stack_size() {
-		assertEquals(100, p.getStackSize());
-	}
+//	@Test
+//	public void test_default_stack_size() {
+//		assertEquals(100, p.getStackSize());
+//	}
 	
 	@Test
 	public void test_another_name() {

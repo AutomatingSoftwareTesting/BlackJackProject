@@ -9,25 +9,21 @@ public class Dealer extends Player {
 		super();
 		deck = new Deck();
 		hand = new Hand();
-		deck.shuffleDeck();
 	}
 	
 	public Deck shuffle() {
-		deck.shuffleDeck();
-		return deck;
+		this.deck = new Deck();
+		this.deck.shuffleDeck();
+		return this.deck;
 	}
 	
 	public Card getCard() {
-		Card card = deck.dealCard();
+		Card card = this.deck.dealCard();
 		return card;
 	}
 	
 	public void dealerHand(Card card) {
 		hand.addCard(card);
-	}
-	
-	public void removeCardsFromDealerHand() {
-		hand = new Hand();
 	}
 	
 	// Had to add in order to get hand value. Why didn't it extend from Player?
