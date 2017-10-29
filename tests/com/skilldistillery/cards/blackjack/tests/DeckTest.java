@@ -90,7 +90,6 @@ public class DeckTest {
 	public void test_out_of_cards() {
 		// To see how jUnit works with exceptions
 		d.getDeck();
-		Card c;
 		boolean thrown = false;
 		
 		for (int i = 0; i < 52; i++) {
@@ -98,7 +97,7 @@ public class DeckTest {
 		}
 		// Should get error because there are only 52 cards in deck
 		try {
-			c = d.dealCard();
+			d.dealCard();
 		}
 		catch (IndexOutOfBoundsException e) {
 			thrown = true;
