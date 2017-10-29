@@ -25,14 +25,14 @@ public class PlayerTest {
 	public void test_default_stack_size() {
 		Player p = new Player("Jason");
 		assertEquals("Jason", p.getName());
-		assertEquals(100, p.getStackSize(), 0.0);
+		assertEquals(100, p.getStackSize(), 0.01);
 	}
 	
 	@Test
 	public void test_non_default() {
 		p = new Player("Bob", 250);
 		assertEquals("Bob", p.getName());
-		assertEquals(250, p.getStackSize(), 0.0);
+		assertEquals(250, p.getStackSize(), 0.01);
 		// 'Bob' isn't in the random name list
 		assertNotEquals("Bob", p.getRandomName());
 	} 

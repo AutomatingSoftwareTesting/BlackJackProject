@@ -132,7 +132,6 @@ public class HandTest {
 	@Test
 	public void test_many_cards_in_hand() {
 		// The max number of players is 6
-		// Should never run out of cards because deck is shuffled after each hand
 		Hand h2 = new Hand();
 		Hand h3 = new Hand();
 		Hand h4 = new Hand();
