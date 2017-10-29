@@ -3,7 +3,7 @@ package com.skilldistillery.cards.blackjack;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class GameLogic {
+public class BlackJackLogic {
 	private Scanner sc = new Scanner(System.in);
 	private Dealer d = new Dealer();
 	private Player p = new Player();

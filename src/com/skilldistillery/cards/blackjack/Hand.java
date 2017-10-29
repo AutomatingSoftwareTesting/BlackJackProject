@@ -25,9 +25,11 @@ public class Hand {
 		int aces = 0;
 		for (Card card : hand) {
 			hv += card.getRank().getValue();
-			if (card.getRank().getValue() == 11);
+			if (card.getRank().getValue() == 11) {
 				aces++;
+			}
 		}
+		// Aces can have multiple values
 		while (aces > 0) {
 			if (hv > 21) {
 				hv -= 10;
