@@ -1,12 +1,12 @@
 # Blackjack Poker
 
 ### Created by Jason Caldwell
-#### October 2017
+##### October 2017
 
 ## Program Overview
-This is a Blackjack poker game.
+A Blackjack poker game.
 
-## Installation
+### Installation
 * Developed in Java.
 
 ## Programming Principles
@@ -16,27 +16,14 @@ This is a Blackjack poker game.
 * Loops (While and For Each)
 * Classes / Objects
 
-## Testing Concepts
+### Testing Concepts
 * Test Driven Development (TDD)
 * 17 test cases in their own package
 
-## Design Overview
-### 7 Classes
-* Card
-* Dealer
-* Deck
-* GameLogic
-* Hand
-* Player
-* PlayGame
-### 2 Enums
-* Rank
-* Suit
-### 4 Test Case Classes
-* CardTest
-* DeckTest
-* HandTest
-* PlayerTest
+### Design Overview
+* 7 Classes
+* 2 Enums
+* 4 Test Case Classes
 
-## Licensing
+### Licensing
 See the file called LICENSE.
