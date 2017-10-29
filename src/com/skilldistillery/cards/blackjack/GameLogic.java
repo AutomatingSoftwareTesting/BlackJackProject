@@ -107,8 +107,8 @@ public class GameLogic {
 		// Dealer will get dealt a second card face down
 		// Until isCardFaceUp() is working this is below the next couple lines of logic
 
-		System.out.println(pName + " is dealt " + p.getHand().getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println("The dealer, is showing a " + d.getHand().getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
+		System.out.println(pName + " is dealt " + p.getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer, is showing a " + d.getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
 		
 		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
 		card = d.getCard();
@@ -140,7 +140,7 @@ public class GameLogic {
 			if (pDecision.equals("H")) {
 				card = d.getCard();
 				p.playerHand(card);
-				System.out.println(pName + " is dealt a " + card + " for a hand of " + p.getHand().getHand() + " totaling " + p.getHand().getValueOfHand() + ".");
+				System.out.println(pName + " is dealt a " + card + " for a hand of " + p.getHand() + " totaling " + p.getHand().getValueOfHand() + ".");
 				if (p.getHand().getValueOfHand() > 21) {
 					pBusts = true;
 					break;
@@ -159,13 +159,13 @@ public class GameLogic {
 	public void dealerHandLogic() {
 		// Requirement #4: Once the player has completed their turn the dealer will begin their turn.
 		dBusts = false;
-		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand().getHand() + "; totaling " + d.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer flips up their down card showing a hand of " + d.getHand() + "; totaling " + d.getHand().getValueOfHand() + ".");
 		
 		if (! pBusts) {
 			while (d.getHand().getValueOfHand() < 17) {
 				card = d.getCard();
 				d.dealerHand(card);
-				System.out.println("The dealer is dealt a " + card + " for a hand of " + d.getHand().getHand() + " totaling " + d.getHand().getValueOfHand() + ".");
+				System.out.println("The dealer is dealt a " + card + " for a hand of " + d.getHand() + " totaling " + d.getHand().getValueOfHand() + ".");
 				if (d.getHand().getValueOfHand() > 21) {
 					dBusts = true;
 					break;
@@ -206,8 +206,8 @@ public class GameLogic {
 	
 	public void handSummary(int s) {
 		p.setStackSize(s);
-		System.out.println(pName + "'s final hand was " + p.getHand().getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
-		System.out.println("The dealer's final hand was " + d.getHand().getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
+		System.out.println(pName + "'s final hand was " + p.getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
+		System.out.println("The dealer's final hand was " + d.getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
 		System.out.println(pName + "'s new stack size is "  + p.getStackSize() + ".");
 	}
 }
