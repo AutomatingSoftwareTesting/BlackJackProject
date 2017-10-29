@@ -141,7 +141,7 @@ public class HandTest {
 		h.addCard(new Card(Rank.TWO, Suit.SPADES));
 		h.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
 		h.addCard(new Card(Rank.FOUR, Suit.DIAMONDS));
-		h.addCard(new Card(Rank.FIVE, Suit.CLUBS));
+		h.addCard(new Card(Rank.THREE, Suit.CLUBS));
 		h.addCard(new Card(Rank.TWO, Suit.CLUBS));
 		h2.addCard(new Card(Rank.QUEEN, Suit.SPADES));
 		h2.addCard(new Card(Rank.KING, Suit.HEARTS));
@@ -156,7 +156,7 @@ public class HandTest {
 		h6.addCard(new Card(Rank.THREE, Suit.HEARTS));
 		h6.addCard(new Card(Rank.TWO, Suit.DIAMONDS));
 		h6.addCard(new Card(Rank.NINE, Suit.CLUBS));
-		assertEquals(20, h.getValueOfHand());
+		assertEquals(18, h.getValueOfHand());
 		assertEquals(20, h2.getValueOfHand());
 		assertEquals(19, h3.getValueOfHand());
 		assertEquals(20, h4.getValueOfHand());

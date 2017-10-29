@@ -10,12 +10,10 @@ import com.skilldistillery.cards.blackjack.Player;
 
 public class PlayerTest {
 	Player p;
-	Player np;
 	
 	@Before
 	public void setUp() throws Exception {
-//		p = new Player("Jason");
-		np = new Player("Bob", 250);
+		p = new Player();
 	}
 
 	@After
@@ -23,25 +21,19 @@ public class PlayerTest {
 		p = null;
 	}
 
-//	@Test
-//	public void test_name() {
-//		assertEquals("Jason", p.getName());
-//	} 
-	
-//	@Test
-//	public void test_default_stack_size() {
-//		assertEquals(100, p.getStackSize());
-//	}
-	
 	@Test
-	public void test_another_name() {
-		assertEquals("Bob", np.getName());
-		// 'Bob' isn't in the random name list
-		assertNotEquals("Bob", np.getRandomName());
-	} 
-	
-	@Test
-	public void test_non_default_stack_size() {
-		assertEquals(250, np.getStackSize());
+	public void test_default_stack_size() {
+		Player p = new Player("Jason");
+		assertEquals("Jason", p.getName());
+		assertEquals(100, p.getStackSize(), 0.0);
 	}
+	
+	@Test
+	public void test_non_default() {
+		p = new Player("Bob", 250);
+		assertEquals("Bob", p.getName());
+		assertEquals(250, p.getStackSize(), 0.0);
+		// 'Bob' isn't in the random name list
+		assertNotEquals("Bob", p.getRandomName());
+	} 
 }

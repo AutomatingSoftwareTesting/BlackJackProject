@@ -71,6 +71,7 @@ public class DeckTest {
 	public void test_shuffle_deck() {
 		d.getDeck();
 		d.shuffleDeck();
-		assertNotEquals("[2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, T♣, J♣, Q♣, K♣, A♣, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, T♦, J♦, Q♦, K♦, A♦, 2❤, 3❤, 4❤, 5❤, 6❤, 7❤, 8❤, 9❤, T❤, J❤, Q❤, K❤, A❤, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, T♠, J♠, Q♠, K♠, A♠]", d.getDeck().toString());  // There is a very small chance that the order will be the same after the shuffle; but is very unlikely.
+		// There is a very small chance that the order will be the same after the shuffle; but is very unlikely.
+		assertNotEquals("[2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, T♣, J♣, Q♣, K♣, A♣, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, T♦, J♦, Q♦, K♦, A♦, 2❤, 3❤, 4❤, 5❤, 6❤, 7❤, 8❤, 9❤, T❤, J❤, Q❤, K❤, A❤, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, T♠, J♠, Q♠, K♠, A♠]", d.getDeck().toString());  
 	}
 }
