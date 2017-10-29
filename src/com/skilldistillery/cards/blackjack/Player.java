@@ -55,13 +55,13 @@ public class Player {
 	}
 
 	public double getRandomStackSize() {
-		Integer [] stacks = {25, 50, 100, 100, 100, 200, 500};
+		Double [] stacks = {25.0, 50.0, 100.0, 100.0, 100.0, 200.0, 500.0};
 		stackSize = stacks[(int)(Math.random() * 7)];
 		return stackSize;
 	}
 	
 	public double placeRandomBet() {
-		Integer [] bets = {1, 5, 10, 20};
+		Double [] bets = {1.0, 5.0, 10.0, 20.0};
 		betSize = bets[(int)(Math.random() * 4)];
 		return betSize;
 	}

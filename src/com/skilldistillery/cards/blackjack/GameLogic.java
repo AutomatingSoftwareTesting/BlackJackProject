@@ -65,17 +65,17 @@ public class GameLogic {
 	}
 	
 	public double playerBet() {
-		System.out.println("\n" + pName + ", the player in the first seat, has $" + pStackSize + ".");
+		System.out.format("%n" + "%s, the player in the first seat, has $%.2f." + "%n", pName, pStackSize);
 		double pBet = -1;
 		try {
 			while (pBet < (tableMin - 1) || pBet > tableMax) {
-				System.out.print(pName + ", how much do you want to bet ($" + tableMin + " to $" + tableMax +")? ");
-				pBet = sc.nextInt();
+				System.out.format("%s, how much do you want to bet ($%.2f to $%.2f)? ", pName, tableMin, tableMax);
+				pBet = sc.nextDouble();
 			}
 		} catch (InputMismatchException e) {
-			if(!sc.hasNextInt()) {
+			if(!sc.hasNextDouble()) {
 			    sc.next();
-		    		System.out.println("Sorry " + pName + ", you didn't enter a whole number for your bet.");
+		    		System.out.format("Sorry %s, you didn't enter a number for your bet.", pName);
 		    		System.out.println("Therefore, you'll bet the table minimum for this hand.");
 			}
 			pBet = tableMin;
@@ -85,7 +85,7 @@ public class GameLogic {
 			System.exit(1);
 		}
 		else {
-			System.out.println(pName + " decides to bet $" + pBet + "." + "\n");
+			System.out.format("%s decides to bet $%.2f." + "\n", pName, pBet);
 		}
 		return pBet;
 	}
@@ -127,7 +127,7 @@ public class GameLogic {
 		if (p.getHand().getValueOfHand() == 21){
 			System.out.println("Congragulations " + pName + ", you win with blackjack.");
 			blackjack = true;
-			pStackSize += pBet * 3 / 2;
+			pStackSize = pStackSize + pBet * 1.5;
 		}
 	}
 	
@@ -182,23 +182,23 @@ public class GameLogic {
 		pBet = b;
 		// Determine winner and new stack size
 		if (pBusts) {
-			System.out.println("\n" + "Sorry, " + pName + ", you went over 21 and the dealer wins.");
+			System.out.println("Sorry, " + pName + ", you went over 21 and the dealer wins.");
 			pStackSize -= pBet;
 		}
 		else if (dBusts) {
-			System.out.println("\n" + "Congragulations " + pName + ", the dealer busts and you win!");
+			System.out.println("Congragulations " + pName + ", the dealer busts and you win!");
 			pStackSize += pBet;
 		}
 		else if (p.getHand().getValueOfHand() == d.getHand().getValueOfHand()) {
 			// Stack sizes don't change
-			System.out.println("\n" + "It's a push (tie).");
+			System.out.println("It's a push (tie).");
 		}
 		else if (p.getHand().getValueOfHand() > d.getHand().getValueOfHand()) {
-			System.out.println("\n" + "Congragulations " + pName + ", you win!");
+			System.out.println("Congragulations " + pName + ", you win!");
 			pStackSize += pBet;
 		}
 		else {
-			System.out.println("\n" + "Sorry " + pName + ", the dealer wins.");
+			System.out.println("Sorry " + pName + ", the dealer wins.");
 			pStackSize -= pBet;
 		}
 		return pStackSize;
@@ -208,6 +208,6 @@ public class GameLogic {
 		p.setStackSize(s);
 		System.out.println(pName + "'s final hand was " + p.getHand() + "; a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println("The dealer's final hand was " + d.getHand() + "; a total of " + d.getHand().getValueOfHand() + ".");
-		System.out.println(pName + "'s new stack size is "  + p.getStackSize() + ".");
+		System.out.format("%s's new stack size is %.2f." + "%n", pName, p.getStackSize());
 	}
 }
