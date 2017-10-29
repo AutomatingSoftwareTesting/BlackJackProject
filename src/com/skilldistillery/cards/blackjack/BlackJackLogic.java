@@ -125,7 +125,7 @@ public class BlackJackLogic {
 		if (p.getHand().getValueOfHand() == 21){
 			System.out.println("Congragulations " + pName + ", you win with blackjack.");
 			blackjack = true;
-			pStackSize = pStackSize + pBet * 1.5;
+//			pStackSize = pStackSize + pBet * 1.5;
 		}
 	}
 	
