@@ -2,8 +2,6 @@ package com.skilldistillery.cards.blackjack.tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.skilldistillery.cards.blackjack.Card;
@@ -13,16 +11,6 @@ import com.skilldistillery.cards.blackjack.Suit;
 public class CardTest {
 	Card card;
 	
-	@Before
-	public void setUp() throws Exception {
-		card = new Card();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		card = null;
-	}
-
 	@Test
 	public void test_card_eight_of_clubs() {
 		card = new Card(Rank.EIGHT, Suit.CLUBS);

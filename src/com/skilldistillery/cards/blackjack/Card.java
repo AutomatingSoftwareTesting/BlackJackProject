@@ -10,11 +10,13 @@ public class Card implements Comparable<Card> {
         this.suit = suit;
     }
     
-    public Card() {}
-    
     public boolean isFaceUp() {
     		// If not face up don't want to show rank or suit; i.e. XX.
     		return true;
+    }
+    
+    public int getValue() {
+    		return rank.getValue();
     }
 
     @Override

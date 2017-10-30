@@ -137,7 +137,6 @@ public class BlackJackLogic {
 		// Same for split hands.
 		int playerHandTotal = p.getHand().getValueOfHand();
 		int dealerHandTotal = d.getHand().getValueOfHand();
-//		String hint = "";
 		// Player hard hand recommendations
 		// https://wizardofodds.com/games/blackjack/strategy/1-deck/ ref 10/29/17
 		if (playerHandTotal >= 4 && playerHandTotal <= 7) {
