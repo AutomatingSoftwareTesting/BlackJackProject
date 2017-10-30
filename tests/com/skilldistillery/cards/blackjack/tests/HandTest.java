@@ -12,121 +12,121 @@ import com.skilldistillery.cards.blackjack.Rank;
 import com.skilldistillery.cards.blackjack.Suit;
 
 public class HandTest {
-	Hand h;
+	Hand hand;
 	
 	@Before
 	public void setUp() throws Exception {
-		h = new Hand();
+		hand = new Hand();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		h = null;
+		hand = null;
 	}
 
 	@Test
 	public void test_hand() {
-		h.addCard(new Card(Rank.KING, Suit.SPADES));
-		h.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
-		assertEquals("[K♠, Q♣]", h.getHand().toString());
-		assertEquals(20, h.getValueOfHand());
+		hand.addCard(new Card(Rank.KING, Suit.SPADES));
+		hand.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
+		assertEquals("[K♠, Q♣]", hand.getHand().toString());
+		assertEquals(20, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_lowest_hand() {
-		h.addCard(new Card(Rank.TWO, Suit.SPADES));
-		h.addCard(new Card(Rank.TWO, Suit.CLUBS));
-		assertEquals("[2♠, 2♣]", h.getHand().toString());
-		assertEquals(4, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TWO, Suit.SPADES));
+		hand.addCard(new Card(Rank.TWO, Suit.CLUBS));
+		assertEquals("[2♠, 2♣]", hand.getHand().toString());
+		assertEquals(4, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_lowest_bust_hand() {
-		h.addCard(new Card(Rank.TWO, Suit.HEARTS));
-		h.addCard(new Card(Rank.TEN, Suit.CLUBS));
-		h.addCard(new Card(Rank.QUEEN, Suit.DIAMONDS));
-		assertEquals("[2❤, T♣, Q♦]", h.getHand().toString());
-		assertEquals(22, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TWO, Suit.HEARTS));
+		hand.addCard(new Card(Rank.TEN, Suit.CLUBS));
+		hand.addCard(new Card(Rank.QUEEN, Suit.DIAMONDS));
+		assertEquals("[2❤, T♣, Q♦]", hand.getHand().toString());
+		assertEquals(22, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_highest_bust_hand() {
-		h.addCard(new Card(Rank.KING, Suit.SPADES));
-		h.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
-		h.addCard(new Card(Rank.ACE, Suit.SPADES));
-		h.addCard(new Card(Rank.KING, Suit.HEARTS));
-		assertEquals(31, h.getValueOfHand());
+		hand.addCard(new Card(Rank.KING, Suit.SPADES));
+		hand.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
+		hand.addCard(new Card(Rank.ACE, Suit.SPADES));
+		hand.addCard(new Card(Rank.KING, Suit.HEARTS));
+		assertEquals(31, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_blackjack() {
-		h.addCard(new Card(Rank.ACE, Suit.SPADES));
-		h.addCard(new Card(Rank.TEN, Suit.SPADES));
-		assertEquals(21, h.getValueOfHand());
+		hand.addCard(new Card(Rank.ACE, Suit.SPADES));
+		hand.addCard(new Card(Rank.TEN, Suit.SPADES));
+		assertEquals(21, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_21() {
-		h.addCard(new Card(Rank.THREE, Suit.SPADES));
-		h.addCard(new Card(Rank.FIVE, Suit.SPADES));
-		h.addCard(new Card(Rank.EIGHT, Suit.SPADES));
-		h.addCard(new Card(Rank.FIVE, Suit.HEARTS));
-		assertEquals(21, h.getValueOfHand());
+		hand.addCard(new Card(Rank.THREE, Suit.SPADES));
+		hand.addCard(new Card(Rank.FIVE, Suit.SPADES));
+		hand.addCard(new Card(Rank.EIGHT, Suit.SPADES));
+		hand.addCard(new Card(Rank.FIVE, Suit.HEARTS));
+		assertEquals(21, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_1_ace_values() {
-		h.addCard(new Card(Rank.TWO, Suit.SPADES));
-		h.addCard(new Card(Rank.TEN, Suit.HEARTS));
-		assertEquals(12, h.getValueOfHand());
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		assertEquals(13, h.getValueOfHand());
-		h.addCard(new Card(Rank.SIX, Suit.CLUBS));
-		assertEquals(19, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TWO, Suit.SPADES));
+		hand.addCard(new Card(Rank.TEN, Suit.HEARTS));
+		assertEquals(12, hand.getValueOfHand());
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		assertEquals(13, hand.getValueOfHand());
+		hand.addCard(new Card(Rank.SIX, Suit.CLUBS));
+		assertEquals(19, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_2_ace_values() {
-		h.addCard(new Card(Rank.TWO, Suit.SPADES));
-		h.addCard(new Card(Rank.ACE, Suit.HEARTS));
-		assertEquals(13, h.getValueOfHand());
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		assertEquals(14, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TWO, Suit.SPADES));
+		hand.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		assertEquals(13, hand.getValueOfHand());
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		assertEquals(14, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_ace_values_dont_bust() {
-		h.addCard(new Card(Rank.TEN, Suit.SPADES));
-		h.addCard(new Card(Rank.ACE, Suit.HEARTS));
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		assertEquals(12, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TEN, Suit.SPADES));
+		hand.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		assertEquals(12, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_surrender_hand() {
-		h.addCard(new Card(Rank.TEN, Suit.SPADES));
-		h.addCard(new Card(Rank.ACE, Suit.HEARTS));
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		h.surrenderHand();
-		assertEquals(0, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TEN, Suit.SPADES));
+		hand.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		hand.surrenderHand();
+		assertEquals(0, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_ace_value_busts() {
-		h.addCard(new Card(Rank.TEN, Suit.SPADES));
-		h.addCard(new Card(Rank.ACE, Suit.HEARTS));
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		h.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
-		assertEquals(22, h.getValueOfHand());
+		hand.addCard(new Card(Rank.TEN, Suit.SPADES));
+		hand.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		hand.addCard(new Card(Rank.QUEEN, Suit.CLUBS));
+		assertEquals(22, hand.getValueOfHand());
 	}
 	
 	@Test
 	public void test_4_aces() {
-		h.addCard(new Card(Rank.ACE, Suit.SPADES));
-		h.addCard(new Card(Rank.ACE, Suit.HEARTS));
-		h.addCard(new Card(Rank.ACE, Suit.CLUBS));
-		h.addCard(new Card(Rank.ACE, Suit.DIAMONDS));
-		assertEquals(14, h.getValueOfHand());
+		hand.addCard(new Card(Rank.ACE, Suit.SPADES));
+		hand.addCard(new Card(Rank.ACE, Suit.HEARTS));
+		hand.addCard(new Card(Rank.ACE, Suit.CLUBS));
+		hand.addCard(new Card(Rank.ACE, Suit.DIAMONDS));
+		assertEquals(14, hand.getValueOfHand());
 	}
 	
 	@Test
@@ -137,11 +137,11 @@ public class HandTest {
 		Hand h4 = new Hand();
 		Hand h5 = new Hand();
 		Hand h6 = new Hand();
-		h.addCard(new Card(Rank.TWO, Suit.SPADES));
-		h.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
-		h.addCard(new Card(Rank.FOUR, Suit.DIAMONDS));
-		h.addCard(new Card(Rank.THREE, Suit.CLUBS));
-		h.addCard(new Card(Rank.TWO, Suit.CLUBS));
+		hand.addCard(new Card(Rank.TWO, Suit.SPADES));
+		hand.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
+		hand.addCard(new Card(Rank.FOUR, Suit.DIAMONDS));
+		hand.addCard(new Card(Rank.THREE, Suit.CLUBS));
+		hand.addCard(new Card(Rank.TWO, Suit.CLUBS));
 		h2.addCard(new Card(Rank.QUEEN, Suit.SPADES));
 		h2.addCard(new Card(Rank.KING, Suit.HEARTS));
 		h3.addCard(new Card(Rank.SIX, Suit.DIAMONDS));
@@ -155,7 +155,7 @@ public class HandTest {
 		h6.addCard(new Card(Rank.THREE, Suit.HEARTS));
 		h6.addCard(new Card(Rank.TWO, Suit.DIAMONDS));
 		h6.addCard(new Card(Rank.NINE, Suit.CLUBS));
-		assertEquals(18, h.getValueOfHand());
+		assertEquals(18, hand.getValueOfHand());
 		assertEquals(20, h2.getValueOfHand());
 		assertEquals(19, h3.getValueOfHand());
 		assertEquals(20, h4.getValueOfHand());

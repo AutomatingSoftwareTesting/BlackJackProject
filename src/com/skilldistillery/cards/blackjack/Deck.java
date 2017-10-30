@@ -10,9 +10,9 @@ public class Deck {
     
     public Deck() {
     		deck = new ArrayList<>(52);
-        for (Suit s : Suit.values()) {
-            for (Rank r : Rank.values()) {
-                deck.add(new Card(r, s));
+        for (Suit suit : Suit.values()) {
+            for (Rank rank : Rank.values()) {
+                deck.add(new Card(rank, suit));
             }
         }
     }
@@ -27,7 +27,7 @@ public class Deck {
     }
     
     public int getNumDelt() {
-    	return numDelt;
+    		return numDelt;
     }
     
 	public List<Card> getDeck() {
