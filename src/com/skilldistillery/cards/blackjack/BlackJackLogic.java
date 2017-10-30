@@ -18,6 +18,7 @@ public class BlackJackLogic {
 	private boolean blackjack;
 	private double tableMin = 1;
 	private double tableMax = 20;
+	private String hint = "";
 	
 	public void startGame() {
 		dealer();
@@ -48,8 +49,8 @@ public class BlackJackLogic {
 	public void houseRules() {
 		// Describe the rules at this casino. The rules below may change as the game evolves.
 		System.out.println("Welcome to the Skill Distillery Blackjack room; the dealer, " + dName + " said.");
-		System.out.println("The limits for this table range from $" + tableMin + " to $" + tableMax + "; in increments of $" + tableMin + ".");
-		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s. Obviously, this rule favors the house.");
+		System.out.println("The limits for this table range from $" + tableMin + " to $" + tableMax + ".");
+		System.out.println("I will stand on hands totaling 17 and above; including 'soft' 17s.");
 		System.out.println("However, you are not allowed to buy insurance; which actually favors you as the player.");
 		// Requirement #3: If a player or dealer is dealt 21 the game is over. Otherwise the player can choose to hit or stay.
 		System.out.println("Therefore, if someone gets 21 (blackjack) with their first two cards they immdediately win the game.");
@@ -107,6 +108,8 @@ public class BlackJackLogic {
 
 		System.out.println(pName + " is dealt " + p.getHand() + " for a total of " + p.getHand().getValueOfHand() + ".");
 		System.out.println("The dealer, is showing a " + d.getHand() + " for a total of " + d.getHand().getValueOfHand() + ".");
+		String odds = strategy();
+		System.out.format("Hint: the odds recommend %s." + "%n", odds);
 		
 		// Dealer gets dealt second card. This card is dealt before the player's additional cards are.
 		card = d.getCard();
@@ -127,6 +130,72 @@ public class BlackJackLogic {
 			blackjack = true;
 //			pStackSize = pStackSize + pBet * 1.5;
 		}
+	}
+	
+	public String strategy() {
+		// Note: player soft hand has slightly different odds; but for this game we are using the same hints for both.
+		// Same for split hands.
+		int playerHandTotal = p.getHand().getValueOfHand();
+		int dealerHandTotal = d.getHand().getValueOfHand();
+//		String hint = "";
+		// Player hard hand recommendations
+		// https://wizardofodds.com/games/blackjack/strategy/1-deck/ ref 10/29/17
+		if (playerHandTotal >= 4 && playerHandTotal <= 7) {
+				hint = "hitting";
+		}
+		else if	(playerHandTotal == 8) {
+			if (dealerHandTotal >= 2 && dealerHandTotal <= 4) {
+				hint = "hitting";
+			}
+			else if (dealerHandTotal >= 5 && dealerHandTotal <= 6) {
+					hint = "doubling";
+			}
+			else if (dealerHandTotal >= 7 && dealerHandTotal <= 11) {
+				hint = "hitting";
+			}
+		}
+		else if	(playerHandTotal == 9) {
+			if (dealerHandTotal >= 2 && dealerHandTotal <= 6) {
+				hint = "doubling";
+			}
+			else if (dealerHandTotal >= 7 && dealerHandTotal <= 11) {
+				hint = "hitting";
+			}
+		}
+		else if	(playerHandTotal == 10) {
+			if (dealerHandTotal >= 2 && dealerHandTotal <= 9) {
+				hint = "doubling";
+			}
+			else if (dealerHandTotal >= 10 && dealerHandTotal <= 11) {
+				hint = "hitting";
+			}
+		}
+		else if	(playerHandTotal == 11) {
+			hint = "doubling";
+		}
+		else if	(playerHandTotal == 12) {
+			if (dealerHandTotal >= 2 && dealerHandTotal <= 3) {
+				hint = "hitting";
+			}
+			else if (dealerHandTotal >= 4 && dealerHandTotal <= 6) {
+				hint = "standing";
+			}
+			else if (dealerHandTotal >= 7 && dealerHandTotal <= 11) {
+				hint = "hitting";
+			}
+		}
+		else if	(playerHandTotal >= 13 && playerHandTotal <= 16) {
+			if (dealerHandTotal >= 2 && dealerHandTotal <= 6) {
+				hint = "standing";
+			}
+			else if (dealerHandTotal >= 7 && dealerHandTotal <= 11) {
+				hint = "hitting";
+			}
+		}
+		else if	(playerHandTotal >= 17) {
+			hint = "standing";
+		}
+		return hint;
 	}
 	
 	public void playerHandLogic() {
