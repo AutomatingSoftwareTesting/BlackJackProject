@@ -18,6 +18,9 @@ A player is given a random stack size for their session. Each hand (round) consi
 * If the dealer busts the player wins.
 * Otherwise, the point values of the two hands are compared and the person with the higher hand value wins. A push (tie) is also possible.
 
+### Sample Hand
+![Blackjack house rules and sample hand displayed](images/Blackjack_Console.png "Blackjack game running in console")
+
 ### Installation
 * Developed in Java.
 
