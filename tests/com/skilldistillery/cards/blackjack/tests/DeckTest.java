@@ -86,6 +86,8 @@ public class DeckTest {
 		assertEquals(52, deck.getNumDelt());
 	}
 	
+	
+	
 	@Test
 	public void test_out_of_cards() {
 		// To see how jUnit works with exceptions
