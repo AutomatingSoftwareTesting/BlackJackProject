@@ -44,4 +44,4 @@ A player is given a random stack size for their session. Each hand (round) consi
 See the file called LICENSE.
 
 ### About the developer
-To see additional information and other projects please visit my [home page](http://jdcald13.com).
+To see additional information and other projects please visit my [personal website](http://jdcald13.com).
