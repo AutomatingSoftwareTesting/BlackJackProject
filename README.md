@@ -32,7 +32,6 @@ A player is given a random stack size for their session. Each hand (round) consi
 * Classes / Objects
 
 ### Testing Concepts
-* Test Driven Development (TDD)
 * 27 test cases in their own package
 
 ### Design Overview
